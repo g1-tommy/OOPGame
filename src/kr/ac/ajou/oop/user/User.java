@@ -1,10 +1,13 @@
 package kr.ac.ajou.oop.user;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class User extends JFrame implements MouseListener {
 
@@ -81,6 +84,7 @@ public class User extends JFrame implements MouseListener {
         setLevel(1);
         setScore(0);
         setGameOver(false);
+        setVisible(false);
     }
 
     @Override
