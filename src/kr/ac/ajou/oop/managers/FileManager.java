@@ -1,12 +1,18 @@
 package kr.ac.ajou.oop.managers;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 import kr.ac.ajou.oop.user.User;
 
-import java.io.*;
-
+@SuppressWarnings("serial")
 public final class FileManager implements Serializable {
 
-    private FileManager() {}
+	private FileManager() {}
 //  To prevent creating an object
 //   1. Make constructor private
 //   2. Make class abstract

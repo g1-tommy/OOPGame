@@ -1,42 +1,14 @@
 package kr.ac.ajou.oop.user;
 
-import java.awt.BorderLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.io.Serializable;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-public class User extends JFrame implements MouseListener {
+@SuppressWarnings("serial")
+public class User implements Serializable {
 
     private int score;
     private int level;
     private String name;
     private boolean isGameOver;
-
-    private JLabel lblName;
-    private JButton btnSave;
-    private JTextField tfName;
-
-    public User() {
-        setTitle("Type your info");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        lblName = new JLabel("Your name:");
-        tfName = new JTextField(10);
-        btnSave = new JButton("Save");
-
-        btnSave.addMouseListener(this);
-
-        add(lblName, BorderLayout.WEST);
-        add(tfName, BorderLayout.CENTER);
-        add(btnSave, BorderLayout.EAST);
-
-        setSize(400,100);
-        setVisible(true);
-    }
 
     public int getScore() {
         return score;
@@ -72,33 +44,5 @@ public class User extends JFrame implements MouseListener {
     public void setGameOver(boolean gameOver) {
         isGameOver = gameOver;
     }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        setName(tfName.getText());
-        setLevel(1);
-        setScore(0);
-        setGameOver(false);
-        setVisible(false);
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    
 }
