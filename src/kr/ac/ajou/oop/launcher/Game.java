@@ -2,8 +2,8 @@ package kr.ac.ajou.oop.launcher;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.GroupLayout;
@@ -26,7 +26,7 @@ import kr.ac.ajou.oop.state.GameState;
 import kr.ac.ajou.oop.state.State;
 import kr.ac.ajou.oop.user.User;
 
-public class Game extends GameState implements MouseListener {
+public class Game extends GameState implements ActionListener {
 
 	private JFrame frame;
 	private JDialog dialog;
@@ -76,7 +76,7 @@ public class Game extends GameState implements MouseListener {
 		childlblName = new JLabel("Your name:");
 		tfName = new JTextField(10);
 		btnSave = new JButton("Save");
-		btnSave.addMouseListener(this);
+		btnSave.addActionListener(this);
 
 		userInfo.add(childlblName, BorderLayout.WEST);
 		userInfo.add(tfName, BorderLayout.CENTER);
@@ -90,7 +90,7 @@ public class Game extends GameState implements MouseListener {
 
 		init();
 
-		frame.setSize(1280, 960);
+		frame.setSize(1280, 800);
 		frame.setVisible(true);
 	}
 
@@ -214,13 +214,7 @@ public class Game extends GameState implements MouseListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		getUser().setName(tfName.getText().toString());
 		getUser().setLevel(1);
@@ -239,24 +233,6 @@ public class Game extends GameState implements MouseListener {
 		
 		// Set Game state
 		setID(State.STATE_GAME_INITIALIZE);
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

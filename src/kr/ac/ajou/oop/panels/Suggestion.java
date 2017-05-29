@@ -2,9 +2,11 @@ package kr.ac.ajou.oop.panels;
 
 import java.awt.BorderLayout;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+@SuppressWarnings("serial")
 public class Suggestion extends JPanel {
 	private JLabel suggestion = new JLabel();
 	//private JPanel panel = new JPanel();

@@ -1,6 +1,6 @@
 package kr.ac.ajou.oop.panels;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.io.IOException;
 
@@ -14,17 +14,26 @@ import kr.ac.ajou.oop.user.User;
 @SuppressWarnings("serial")
 public class Code extends JPanel {
 
+	private JPanel panel;
 	private JLabel lblCode;
     private String code;
     
     public Code() {
+    	setLayout(new BorderLayout());
+    	
+    	panel = new JPanel();
+    	panel.setLayout(new BorderLayout());
+    	
     	lblCode = new JLabel();
-    	setLayout(new FlowLayout());
     	
         TitledBorder titled = new TitledBorder("Code");
         setBorder(titled);
         
-    	add(lblCode);
+        lblCode.setText("TEST");
+        
+    	panel.add(lblCode, BorderLayout.CENTER);
+    	add(panel, BorderLayout.CENTER);
+    	setVisible(true);
     }
 
     public boolean compare(int level) {
