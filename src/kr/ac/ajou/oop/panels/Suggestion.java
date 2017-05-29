@@ -1,13 +1,15 @@
 package kr.ac.ajou.oop.panels;
 
+import java.awt.BorderLayout;
+
 import javax.swing.*;
 
 public class Suggestion extends JPanel {
 	private JLabel suggestion = new JLabel();
-	private JPanel panel = new JPanel();
-
+	//private JPanel panel = new JPanel();
+	
 	public Suggestion() {
-
+		setLayout(new BorderLayout());
 	}
 
 	public void load(int level) {
@@ -18,7 +20,7 @@ public class Suggestion extends JPanel {
 					+ "If we want to create a gorilla, what we have to make before? ___________ class\n"
 					+ "Now we made just gorilla. Let¡¯s make real gorilla object.\n"
 					+ "Decide name of gorilla character : ");
-			panel.add(suggestion);
+			add(suggestion,BorderLayout.NORTH);
 			break;
 		case 2:
 			suggestion.setText("Choose the right answers:\n"
