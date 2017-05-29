@@ -47,6 +47,7 @@ public class Game extends GameState implements MouseListener {
 			public void run() {
 				try {
 					Game window = new Game();
+					window.update();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
