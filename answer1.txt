@@ -154,6 +154,7 @@ public class Game extends GameState implements MouseListener {
 		lblName = new JLabel();
 		lblName.setText("Name: " + getUser().getName());
 
+
 		panel.setLayout(new BorderLayout());
 		
 		panel.add(lblScore, BorderLayout.WEST);
@@ -161,29 +162,66 @@ public class Game extends GameState implements MouseListener {
 		panel.add(lblName, BorderLayout.EAST);
 
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addContainerGap()).addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addComponent(suggestion, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addComponent(guidance, GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(input, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))).addPreferredGap(ComponentPlacement.RELATED).addComponent(code, GroupLayout.PREFERRED_SIZE, 437, GroupLayout.PREFERRED_SIZE).addContainerGap()));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false).addGroup(groupLayout.createSequentialGroup().addGap(115).addComponent(suggestion, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)).addGroup(groupLayout.createSequentialGroup().addPreferredGap(ComponentPlacement.RELATED).addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addComponent(guidance, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED, 350, Short.MAX_VALUE).addComponent(input, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)).addComponent(code, GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)))) .addContainerGap(351, Short.MAX_VALUE)));
-		
+		groupLayout
+				.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout
+								.createSequentialGroup().addContainerGap()
+								.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+										Short.MAX_VALUE)
+								.addContainerGap())
+						.addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout
+								.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+										.addComponent(suggestion, GroupLayout.PREFERRED_SIZE, 0,
+												GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(guidance, GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(input,
+										GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(code, GroupLayout.PREFERRED_SIZE, 437, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap()));
+		groupLayout
+				.setVerticalGroup(
+						groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup()
+								.addContainerGap().addComponent(panel, GroupLayout.PREFERRED_SIZE,
+										GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addGroup(groupLayout.createSequentialGroup().addGap(115).addComponent(
+												suggestion, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+														.addGroup(groupLayout.createSequentialGroup()
+																.addComponent(guidance, GroupLayout.PREFERRED_SIZE, 210,
+																		GroupLayout.PREFERRED_SIZE)
+																.addPreferredGap(ComponentPlacement.RELATED, 350,
+																		Short.MAX_VALUE)
+																.addComponent(input, GroupLayout.PREFERRED_SIZE, 194,
+																		GroupLayout.PREFERRED_SIZE))
+														.addComponent(code, GroupLayout.DEFAULT_SIZE, 754,
+																Short.MAX_VALUE))))
+								.addContainerGap(351, Short.MAX_VALUE)));
 		GroupLayout gl_code = new GroupLayout(code);
 		gl_code.setHorizontalGroup(gl_code.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
 		gl_code.setVerticalGroup(gl_code.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
 		code.setLayout(gl_code);
-		
 		GroupLayout gl_input = new GroupLayout(input);
 		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
 		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
 		input.setLayout(gl_input);
-		
 		GroupLayout gl_suggestion = new GroupLayout(suggestion);
-		gl_suggestion.setHorizontalGroup(gl_suggestion.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
-		gl_suggestion.setVerticalGroup(gl_suggestion.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
+		gl_suggestion
+				.setHorizontalGroup(gl_suggestion.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
+		gl_suggestion
+				.setVerticalGroup(gl_suggestion.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
 		suggestion.setLayout(gl_suggestion);
-		
 		GroupLayout gl_guidance = new GroupLayout(guidance);
-		gl_guidance.setHorizontalGroup(gl_guidance.createParallelGroup(Alignment.LEADING).addGap(0, 1155, Short.MAX_VALUE));
-		gl_guidance.setVerticalGroup(gl_guidance.createParallelGroup(Alignment.LEADING).addGap(0, 773, Short.MAX_VALUE));
+		gl_guidance.setHorizontalGroup(
+				gl_guidance.createParallelGroup(Alignment.LEADING).addGap(0, 1155, Short.MAX_VALUE));
+		gl_guidance
+				.setVerticalGroup(gl_guidance.createParallelGroup(Alignment.LEADING).addGap(0, 773, Short.MAX_VALUE));
 		guidance.setLayout(gl_guidance);
-		
 		frame.getContentPane().setLayout(groupLayout);
 
 		// Set Game state
@@ -197,7 +235,7 @@ public class Game extends GameState implements MouseListener {
 
 	private void prepareLevel() throws IOException, ClassNotFoundException {
 		getCode().setCode(FileManager.loadAnswerCode(getUser().getLevel()));
-//		getGuidance().setHint(FileManager.loadGuidance(getUser().getLevel()));
+		getGuidance().setHint(FileManager.loadGuidance(getUser().getLevel()));
 	}
 
 	private User getUser() {
