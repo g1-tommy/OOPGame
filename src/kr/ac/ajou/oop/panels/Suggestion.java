@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class Suggestion extends JPanel {
 	private JLabel suggestion = new JLabel();
-	//private JPanel panel = new JPanel();
+	
 	
 	public Suggestion() {
 		setLayout(new BorderLayout());
@@ -14,7 +14,7 @@ public class Suggestion extends JPanel {
 
 	public void load(int level) {
 		switch (level) {
-		case 1:
+		case 1: 
 			suggestion.setText("Before we make main character, we have to describe what gorilla is.\n"
 					+ "And we called it a ¡®Class¡¯. Class is blueprint of object.\n"
 					+ "If we want to create a gorilla, what we have to make before? ___________ class\n"
