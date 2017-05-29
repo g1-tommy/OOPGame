@@ -3,12 +3,17 @@ package kr.ac.ajou.oop.panels;
 import java.awt.BorderLayout;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 
 public class Suggestion extends JPanel {
 	private JLabel suggestion = new JLabel();
 	//private JPanel panel = new JPanel();
 	
 	public Suggestion() {
+
+        TitledBorder titled = new TitledBorder("Suggestion");
+        setBorder(titled);
+        
 		setLayout(new BorderLayout());
 	}
 
@@ -16,9 +21,9 @@ public class Suggestion extends JPanel {
 		switch (level) {
 		case 1:
 			suggestion.setText("Before we make main character, we have to describe what gorilla is.\n"
-					+ "And we called it a ¡®Class¡¯. Class is blueprint of object.\n"
+					+ "And we called it a ï¿½ï¿½Classï¿½ï¿½. Class is blueprint of object.\n"
 					+ "If we want to create a gorilla, what we have to make before? ___________ class\n"
-					+ "Now we made just gorilla. Let¡¯s make real gorilla object.\n"
+					+ "Now we made just gorilla. Letï¿½ï¿½s make real gorilla object.\n"
 					+ "Decide name of gorilla character : ");
 			add(suggestion,BorderLayout.NORTH);
 			break;
