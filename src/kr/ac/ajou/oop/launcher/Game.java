@@ -102,6 +102,7 @@ public class Game extends GameState implements MouseListener {
 
 	@Override
 	public void update() {
+		System.out.println(getID());
 		switch (getID()) {
 		case State.STATE_GAME_INITIALIZE:
 			setID(State.STATE_GAME_PLAY);
