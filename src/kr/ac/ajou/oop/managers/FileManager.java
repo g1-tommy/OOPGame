@@ -1,7 +1,6 @@
 package kr.ac.ajou.oop.managers;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -12,7 +11,7 @@ import java.io.Serializable;
 import kr.ac.ajou.oop.user.User;
 
 @SuppressWarnings("serial")
-public final class FileManager implements Serializable {
+public class FileManager implements Serializable {
 
 	private FileManager() {}
 	// To prevent creating an object
@@ -24,24 +23,27 @@ public final class FileManager implements Serializable {
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 		oos.writeObject(u);
+		
 		oos.close();
 	}
 
 	public static String loadGuidance(int level) throws IOException, ClassNotFoundException {
-		String hint = "";
-		int c;
-		FileInputStream fis = new FileInputStream("guide" + level + ".txt");
 
-		while ((c = fis.read()) != -1)
-			hint += (char) fis.read();
+		BufferedReader br = new BufferedReader(new FileReader("guidance" + level + ".txt"));
+		StringBuilder sb = new StringBuilder();
+		String line = br.readLine();
 
-		fis.close();
-		return hint;
+		while (line != null) {
+			sb.append(line);
+			sb.append(System.lineSeparator());
+			line = br.readLine();
+		}
+		
+		br.close();
+		return sb.toString();
 	}
 
 	public static String loadAnswerCode(int level) throws FileNotFoundException, IOException {
-		String code;
-
 		BufferedReader br = new BufferedReader(new FileReader("answer" + level + ".txt"));
 		StringBuilder sb = new StringBuilder();
 		String line = br.readLine();
@@ -52,9 +54,8 @@ public final class FileManager implements Serializable {
 			line = br.readLine();
 		}
 		
-		code = sb.toString();
 		br.close();
-		return code;
+		return sb.toString();
 	}
 
 }

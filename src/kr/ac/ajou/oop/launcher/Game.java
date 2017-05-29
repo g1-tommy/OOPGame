@@ -64,6 +64,12 @@ public class Game extends GameState implements MouseListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		user = new User();
+		
+		code = new Code();
+		suggestion = new Suggestion();
+		input = new Input();
+		guidance = new Guidance();
+		
 		dialog = new JDialog(frame, true);
 		JPanel userInfo = new JPanel();
 
@@ -136,10 +142,6 @@ public class Game extends GameState implements MouseListener {
 	}
 
 	private void init() {
-		code = new Code();
-		suggestion = new Suggestion();
-		input = new Input();
-		guidance = new Guidance();
 
 		// User panel
 		panel = new JPanel();
@@ -162,7 +164,7 @@ public class Game extends GameState implements MouseListener {
 
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addContainerGap()).addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addComponent(suggestion, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addComponent(guidance, GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(input, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))).addPreferredGap(ComponentPlacement.RELATED).addComponent(code, GroupLayout.PREFERRED_SIZE, 437, GroupLayout.PREFERRED_SIZE).addContainerGap()));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false).addGroup(groupLayout.createSequentialGroup().addGap(115).addComponent(suggestion, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)).addGroup(groupLayout.createSequentialGroup().addPreferredGap(ComponentPlacement.RELATED).addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addComponent(guidance, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED, 350, Short.MAX_VALUE).addComponent(input, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)).addComponent(code, GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)))) .addContainerGap(351, Short.MAX_VALUE)));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false).addGroup(groupLayout.createSequentialGroup().addGap(115).addComponent(suggestion, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)).addGroup(groupLayout.createSequentialGroup().addPreferredGap(ComponentPlacement.RELATED).addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addComponent(guidance, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED, 350, Short.MAX_VALUE).addComponent(input, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)).addComponent(code, GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)))).addContainerGap(351, Short.MAX_VALUE)));
 		
 		GroupLayout gl_code = new GroupLayout(code);
 		gl_code.setHorizontalGroup(gl_code.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
@@ -185,10 +187,6 @@ public class Game extends GameState implements MouseListener {
 		guidance.setLayout(gl_guidance);
 		
 		frame.getContentPane().setLayout(groupLayout);
-
-		// Set Game state
-		setID(State.STATE_GAME_INITIALIZE);
-
 	}
 
 	private void gameOver() {
@@ -196,8 +194,8 @@ public class Game extends GameState implements MouseListener {
 	}
 
 	private void prepareLevel() throws IOException, ClassNotFoundException {
-		getCode().setCode(FileManager.loadAnswerCode(getUser().getLevel()));
-//		getGuidance().setHint(FileManager.loadGuidance(getUser().getLevel()));
+		getCode().load(getUser());
+		getGuidance().load(getUser());
 	}
 
 	private User getUser() {
@@ -225,10 +223,10 @@ public class Game extends GameState implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		user.setName(tfName.getText().toString());
-		user.setLevel(1);
-		user.setScore(0);
-		user.setGameOver(false);
+		getUser().setName(tfName.getText().toString());
+		getUser().setLevel(1);
+		getUser().setScore(0);
+		getUser().setGameOver(false);
 
 		setUser(user);
 		dialog.setVisible(false);
@@ -239,6 +237,9 @@ public class Game extends GameState implements MouseListener {
 		} catch (IOException | ClassNotFoundException ex) {
 			ex.printStackTrace();
 		}
+		
+		// Set Game state
+		setID(State.STATE_GAME_INITIALIZE);
 	}
 
 	@Override
