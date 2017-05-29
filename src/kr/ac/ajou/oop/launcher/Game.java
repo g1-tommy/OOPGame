@@ -57,7 +57,6 @@ public class Game extends GameState implements MouseListener {
 	}
 
 	public Game() {
-		
 		setID(State.STATE_GAME_READY);
 
 		frame = new JFrame("OOP Education Game");
@@ -102,7 +101,6 @@ public class Game extends GameState implements MouseListener {
 
 	@Override
 	public void update() {
-		System.out.println(getID());
 		switch (getID()) {
 		case State.STATE_GAME_INITIALIZE:
 			setID(State.STATE_GAME_PLAY);
@@ -144,7 +142,6 @@ public class Game extends GameState implements MouseListener {
 	}
 
 	private void init() {
-
 		// User panel
 		panel = new JPanel();
 
