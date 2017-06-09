@@ -1,11 +1,9 @@
 package kr.ac.ajou.oop.panels;
 
-import java.awt.*;
 import java.io.IOException;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 
 import kr.ac.ajou.oop.managers.FileManager;
 import kr.ac.ajou.oop.user.User;
@@ -17,14 +15,6 @@ public class Code extends JPanel {
     private String code;
     
     public Code() {
-    	setLayout(new BorderLayout());
-        TitledBorder titled = new TitledBorder("Code");
-        setBorder(titled);
-
-    	lblCode = new JLabel();
-        lblCode.setText("TEST");
-
-    	add(lblCode, BorderLayout.CENTER);
     }
 
     public boolean compare(int level) {

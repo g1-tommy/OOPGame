@@ -37,6 +37,7 @@ public class Game extends GameState implements ActionListener {
 	private JButton btnSave;
 	private JTextField tfName;
 	private JFrame frame;
+	private JLabel lblGuidance, lblUsername;
 	
 	private Code code;
 	private Suggestion suggestion;
@@ -87,19 +88,13 @@ public class Game extends GameState implements ActionListener {
 		code = new Code();
 		suggestion = new Suggestion();
 		input = new Input();
-		guidance = new Guidance();
-		
-		dialog.getContentPane().add(userInfo);
-		dialog.setBounds(100, 100, 450, 300);
-		dialog.setSize(300, 60);
-		dialog.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		dialog.setVisible(true);
-		
+		guidance = new Guidance();		
 		
 		JPanel userinfo = new JPanel();
 		userinfo.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblScore = new JLabel();
+		lblScore.setHorizontalAlignment(SwingConstants.LEFT);
 		lblScore.setText("Score: " + getUser().getScore());
 		userinfo.add(lblScore, BorderLayout.WEST);
 		
@@ -108,7 +103,8 @@ public class Game extends GameState implements ActionListener {
 		lblLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		userinfo.add(lblLevel, BorderLayout.CENTER);
 		
-		JLabel lblUsername = new JLabel();
+		lblUsername = new JLabel();
+		lblUsername.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsername.setText("Name: " + getUser().getName());
 		userinfo.add(lblUsername, BorderLayout.EAST);
 		
@@ -156,6 +152,9 @@ public class Game extends GameState implements ActionListener {
 					.addContainerGap())
 		);
 		
+		lblGuidance = new JLabel();
+		guidance.add(lblGuidance);
+		
 		JButton btnCheckMyAnswer = new JButton("Check my Answer");
 		GroupLayout gl_input = new GroupLayout(input);
 		gl_input.setHorizontalGroup(
@@ -172,6 +171,12 @@ public class Game extends GameState implements ActionListener {
 		);
 		input.setLayout(gl_input);
 		contentPane.setLayout(gl_contentPane);
+		
+		dialog.getContentPane().add(userInfo);
+		dialog.setBounds(100, 100, 450, 300);
+		dialog.setSize(300, 60);
+		dialog.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		dialog.setVisible(true);
 	}
 	
 	private void gameOver() {
@@ -181,6 +186,7 @@ public class Game extends GameState implements ActionListener {
 	private void prepareLevel() throws IOException, ClassNotFoundException {
 		getCode().load(getUser());
 		getGuidance().load(getUser());
+		lblGuidance.setText(guidance.getHint());
 	}
 
 	private User getUser() {
@@ -209,6 +215,7 @@ public class Game extends GameState implements ActionListener {
 		getUser().setGameOver(false);
 
 		setUser(user);
+		lblUsername.setText("Name: " + getUser().getName());
 		dialog.setVisible(false);
 
 		try {

@@ -1,6 +1,7 @@
 package kr.ac.ajou.oop.managers;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -12,11 +13,8 @@ import kr.ac.ajou.oop.user.User;
 
 @SuppressWarnings("serial")
 public class FileManager implements Serializable {
-
+	
 	private FileManager() {}
-	// To prevent creating an object
-	// 1. Make constructor private
-	// 2. Make class abstract
 
 	public static void saveUser(User u) throws IOException {
 		FileOutputStream fos = new FileOutputStream("user.dat");
@@ -29,14 +27,14 @@ public class FileManager implements Serializable {
 
 	public static String loadGuidance(int level) throws IOException, ClassNotFoundException {
 
-		BufferedReader br = new BufferedReader(new FileReader("guidance" + level + ".txt"));
+		File file = new File("data/guidance_" + level + ".txt");
+		BufferedReader br = new BufferedReader(new FileReader(file));
 		StringBuilder sb = new StringBuilder();
-		String line = br.readLine();
+		String line;
 
-		while (line != null) {
+		while ((line = br.readLine()) != null) {
 			sb.append(line);
 			sb.append(System.lineSeparator());
-			line = br.readLine();
 		}
 		
 		br.close();
@@ -44,14 +42,14 @@ public class FileManager implements Serializable {
 	}
 
 	public static String loadAnswerCode(int level) throws FileNotFoundException, IOException {
-		BufferedReader br = new BufferedReader(new FileReader("answer" + level + ".txt"));
+		File file = new File("data/answer_" + level + ".txt");
+		BufferedReader br = new BufferedReader(new FileReader(file));
 		StringBuilder sb = new StringBuilder();
-		String line = br.readLine();
+		String line;
 
-		while (line != null) {
+		while ((line = br.readLine()) != null) {
 			sb.append(line);
 			sb.append(System.lineSeparator());
-			line = br.readLine();
 		}
 		
 		br.close();
