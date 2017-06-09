@@ -31,10 +31,11 @@ public class Game extends GameState implements ActionListener {
 	private JFrame frame;
 	private JDialog dialog;
 	private JPanel panel;
-	private JLabel lblName, lblScore, lblLevel, childlblName;
+	private JLabel lblName, lblScore, lblLevel;
 	private JButton btnSave;
 	private JTextField tfName;
 
+	private JPanel codePanel, suggestionPanel, guidancePanel, inputPanel;
 	private Code code;
 	private Suggestion suggestion;
 	private Input input;
@@ -64,16 +65,30 @@ public class Game extends GameState implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		user = new User();
-		
+
 		code = new Code();
 		suggestion = new Suggestion();
 		input = new Input();
 		guidance = new Guidance();
 		
+		codePanel = new JPanel();
+		suggestionPanel = new JPanel();
+		guidancePanel = new JPanel();
+		inputPanel = new JPanel();
+
+		codePanel.setLayout(new BorderLayout());
+		codePanel.add(code, BorderLayout.CENTER);
+		suggestionPanel.setLayout(new BorderLayout());
+		suggestionPanel.add(suggestion, BorderLayout.CENTER);
+		guidancePanel.setLayout(new BorderLayout());
+		guidancePanel.add(guidance, BorderLayout.CENTER);
+		inputPanel.setLayout(new BorderLayout());
+		inputPanel.add(input, BorderLayout.CENTER);
+		
 		dialog = new JDialog(frame, true);
 		JPanel userInfo = new JPanel();
+		JLabel childlblName = new JLabel("Your name:");
 
-		childlblName = new JLabel("Your name:");
 		tfName = new JTextField(10);
 		btnSave = new JButton("Save");
 		btnSave.addActionListener(this);
@@ -165,10 +180,10 @@ public class Game extends GameState implements ActionListener {
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addContainerGap()).addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addComponent(suggestion, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addComponent(guidance, GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(input, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))).addPreferredGap(ComponentPlacement.RELATED).addComponent(code, GroupLayout.PREFERRED_SIZE, 437, GroupLayout.PREFERRED_SIZE).addContainerGap()));
 		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false).addGroup(groupLayout.createSequentialGroup().addGap(115).addComponent(suggestion, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)).addGroup(groupLayout.createSequentialGroup().addPreferredGap(ComponentPlacement.RELATED).addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout.createSequentialGroup().addComponent(guidance, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED, 350, Short.MAX_VALUE).addComponent(input, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)).addComponent(code, GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)))).addContainerGap(351, Short.MAX_VALUE)));
 		
-		GroupLayout gl_code = new GroupLayout(code);
+		GroupLayout gl_code = new GroupLayout(codePanel);
 		gl_code.setHorizontalGroup(gl_code.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
 		gl_code.setVerticalGroup(gl_code.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
-		code.setLayout(gl_code);
+		codePanel.setLayout(gl_code);
 		
 		GroupLayout gl_input = new GroupLayout(input);
 		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGap(0, 0, Short.MAX_VALUE));
@@ -234,5 +249,4 @@ public class Game extends GameState implements ActionListener {
 		// Set Game state
 		setID(State.STATE_GAME_INITIALIZE);
 	}
-
 }

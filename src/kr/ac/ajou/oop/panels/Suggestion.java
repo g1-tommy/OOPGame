@@ -12,11 +12,9 @@ public class Suggestion extends JPanel {
 	
 	
 	public Suggestion() {
-
+		setLayout(new BorderLayout());
         TitledBorder titled = new TitledBorder("Suggestion");
         setBorder(titled);
-        
-		setLayout(new BorderLayout());
 	}
 
 	public void load(int level) {
@@ -37,9 +35,9 @@ public class Suggestion extends JPanel {
 					+ "-enemy (has) a baton\n"
 					+ "-enemy (has) a knife\n"
 					+ "-enemy (has) a blaster\n"
-					+ "-Gorila (is/has) a character.\n"
-					+ "-Gorila (is/has) a booster\n"
-					+ "-Gorila (is/has) a gun");
+					+ "-Gorilla (is/has) a character.\n"
+					+ "-Gorilla (is/has) a booster\n"
+					+ "-Gorilla (is/has) a gun");
 
 			break;
 		case 3:

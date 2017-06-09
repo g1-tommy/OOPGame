@@ -1,6 +1,6 @@
 package kr.ac.ajou.oop.panels;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,12 +15,13 @@ public class Input extends JPanel implements ActionListener {
     private JButton check;
 
     public Input() {
-        check = new JButton("Check Answer");
-        check.addActionListener(this);
-        
+        setLayout(new BorderLayout());
         TitledBorder titled = new TitledBorder("Your answer:");
         setBorder(titled);
-        
+
+        check = new JButton("Check Answer");
+        check.addActionListener(this);
+
         add(check);
     }
 

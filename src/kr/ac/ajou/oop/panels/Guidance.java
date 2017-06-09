@@ -1,5 +1,6 @@
 package kr.ac.ajou.oop.panels;
 
+import java.awt.*;
 import java.io.IOException;
 
 import javax.swing.JPanel;
@@ -13,6 +14,7 @@ public class Guidance extends JPanel {
     private String hint;
     
     public Guidance() {
+        setLayout(new BorderLayout());
         TitledBorder titled = new TitledBorder("You have to:");
         setBorder(titled);
     }

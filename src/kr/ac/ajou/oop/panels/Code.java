@@ -1,7 +1,6 @@
 package kr.ac.ajou.oop.panels;
 
-import java.awt.BorderLayout;
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.IOException;
 
 import javax.swing.JLabel;
@@ -14,26 +13,18 @@ import kr.ac.ajou.oop.user.User;
 @SuppressWarnings("serial")
 public class Code extends JPanel {
 
-	private JPanel panel;
 	private JLabel lblCode;
     private String code;
     
     public Code() {
     	setLayout(new BorderLayout());
-    	
-    	panel = new JPanel();
-    	panel.setLayout(new BorderLayout());
-    	
-    	lblCode = new JLabel();
-    	
         TitledBorder titled = new TitledBorder("Code");
         setBorder(titled);
-        
+
+    	lblCode = new JLabel();
         lblCode.setText("TEST");
-        
-    	panel.add(lblCode, BorderLayout.CENTER);
-    	add(panel, BorderLayout.CENTER);
-    	setVisible(true);
+
+    	add(lblCode, BorderLayout.CENTER);
     }
 
     public boolean compare(int level) {
@@ -57,8 +48,5 @@ public class Code extends JPanel {
         this.code = code;
     }
     
-    @Override
-    public void paintComponent(Graphics g) {
-    	super.paintComponent(g);
-    }
+
 }
