@@ -12,5 +12,4 @@ public class State {
     public static final int STATE_GAME_OVER = 7;
     public static final int STATE_EXIT = 8;
 
-
 }

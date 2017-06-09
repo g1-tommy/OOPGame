@@ -7,6 +7,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -56,6 +58,7 @@ public class Game extends GameState implements ActionListener {
 			public void run() {
 				try {
 					Game launcher = new Game();
+					launcher.update();
 					launcher.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -193,6 +196,7 @@ public class Game extends GameState implements ActionListener {
 	
 	private void gameOver() {
 		getUser().setGameOver(true);
+		JOptionPane.showMessageDialog(null, "Game ended!", "Game Over", JOptionPane.OK_OPTION);
 	}
 
 	private void prepareLevel() throws IOException, ClassNotFoundException {
@@ -220,7 +224,6 @@ public class Game extends GameState implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 		getUser().setName(tfName.getText().toString());
 		getUser().setLevel(1);
@@ -245,32 +248,31 @@ public class Game extends GameState implements ActionListener {
 
 	@Override
 	public void render() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		switch (getID()) {
 		case State.STATE_GAME_INITIALIZE:
 			setID(State.STATE_GAME_PLAY);
 			break;
 		case State.STATE_GAME_PLAY:
-
 			break;
 		case State.STATE_ANSWER_CORRECT:
-
+			getUser().setScore(getUser().getScore() + getUser().getLevel() * new Random().nextInt(100));
 			setID(State.STATE_NEXT_LEVEL);
 			break;
 		case State.STATE_ANSWER_INCORRECT:
-
+			JOptionPane.showMessageDialog(null, "Incorrect! Try Again.", "Incorrect!", JOptionPane.OK_OPTION);
+			setID(State.STATE_GAME_PLAY);
 			break;
 		case State.STATE_HIGH_SCORE:
-
+			JOptionPane.showMessageDialog(null, "You make the best score in this game ever before!", "Congrats!", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_OVER);
 			break;
 		case State.STATE_NEXT_LEVEL:
+			getUser().setLevel(getUser().getLevel() + 1);
 			try {
 				prepareLevel();
 			} catch (IOException | ClassNotFoundException e) {
@@ -279,17 +281,23 @@ public class Game extends GameState implements ActionListener {
 			break;
 		case State.STATE_GAME_OVER:
 			gameOver();
+			try {
+				FileManager.saveUser(getUser());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "Saved!", JOptionPane.OK_OPTION);
 			setID(State.STATE_EXIT);
 			break;
 		case State.STATE_EXIT:
-			System.exit(1);
+			resetContent();
 			break;
 		}
 	}
 
 	@Override
 	public void resetContent() {
-		// TODO Auto-generated method stub
-		
+		System.exit(1);
 	}
 }
