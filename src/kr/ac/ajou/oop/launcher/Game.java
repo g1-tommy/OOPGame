@@ -3,6 +3,7 @@ package kr.ac.ajou.oop.launcher;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
@@ -37,7 +39,8 @@ public class Game extends GameState implements ActionListener {
 	private JButton btnSave;
 	private JTextField tfName;
 	private JFrame frame;
-	private JLabel lblGuidance, lblUsername;
+	private JLabel lblUsername;
+	private JTextArea lblGuidance, lblCode;
 	
 	private Code code;
 	private Suggestion suggestion;
@@ -67,7 +70,7 @@ public class Game extends GameState implements ActionListener {
 	public Game() {
 		frame = new JFrame("OOP Education Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 700, 700);
+		frame.setBounds(50, 50, 900, 800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -125,14 +128,14 @@ public class Game extends GameState implements ActionListener {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(userinfo, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(input, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(situation, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(guidance, GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(guidance, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+								.addComponent(input, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+								.addComponent(situation, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(code, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
-						.addComponent(userinfo, GroupLayout.PREFERRED_SIZE, 678, GroupLayout.PREFERRED_SIZE))
+							.addComponent(code, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -142,17 +145,26 @@ public class Game extends GameState implements ActionListener {
 					.addComponent(userinfo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(guidance, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(guidance, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(situation, GroupLayout.PREFERRED_SIZE, 354, GroupLayout.PREFERRED_SIZE)
+							.addComponent(situation, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(input, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
-						.addComponent(code, GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE))
+							.addComponent(input, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
+						.addComponent(code, GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
-		lblGuidance = new JLabel();
+		lblCode = new JTextArea();
+		lblCode.setEditable(false);
+		lblCode.setHighlighter(null);
+		lblCode.setBackground(SystemColor.window);
+		code.add(lblCode);
+		
+		lblGuidance = new JTextArea();
+		lblGuidance.setEditable(false);
+		lblGuidance.setHighlighter(null);
+		lblGuidance.setBackground(SystemColor.window);
 		guidance.add(lblGuidance);
 		
 		JButton btnCheckMyAnswer = new JButton("Check my Answer");
@@ -186,7 +198,8 @@ public class Game extends GameState implements ActionListener {
 	private void prepareLevel() throws IOException, ClassNotFoundException {
 		getCode().load(getUser());
 		getGuidance().load(getUser());
-		lblGuidance.setText(guidance.getHint());
+		lblGuidance.setText(getGuidance().getHint());
+		lblCode.setText(getCode().getCode());
 	}
 
 	private User getUser() {

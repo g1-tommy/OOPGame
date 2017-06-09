@@ -1,0 +1,6 @@
+As we learned on previous stage, there is a relationship “A is a B” between classes. 
+In that relation, we can use B’s methods(behaviour) and fix them.
+And the gorilla want to punch enemy in a nicer way than the enemy.
+Then we should fix the __________________ method in ___________________ class.
+
+We didn’t decide how to explain ‘Overloading’ concept.

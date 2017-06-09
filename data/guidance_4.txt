@@ -1,0 +1,3 @@
+Gorilla should have it’s own properties(state) and behavior.s.
+Weight, age, motto and gender are Gorilla’s _____________ and
+Punch, shoot, move, jump, block are Gorilla’s ________________.

@@ -16,10 +16,13 @@ public class Guidance extends JPanel {
 
     public void load(User u) {
     	try{
-        	setHint(FileManager.loadAnswerCode(u.getLevel()));
+        	setHint(FileManager.loadGuidance(u.getLevel()));
     	}catch(IOException e) {
     		e.printStackTrace();
-    	}
+    	} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     public String getHint() {
