@@ -30,7 +30,7 @@ import kr.ac.ajou.oop.state.GameState;
 import kr.ac.ajou.oop.state.State;
 import kr.ac.ajou.oop.user.User;
 
-public class Launcher extends GameState implements ActionListener {
+public class Game extends GameState implements ActionListener {
 
 	private JPanel contentPane;
 	private JDialog dialog;
@@ -51,7 +51,7 @@ public class Launcher extends GameState implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Launcher launcher = new Launcher();
+					Game launcher = new Game();
 					launcher.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,7 +63,7 @@ public class Launcher extends GameState implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public Launcher() {
+	public Game() {
 		frame = new JFrame("OOP Education Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 700, 700);
