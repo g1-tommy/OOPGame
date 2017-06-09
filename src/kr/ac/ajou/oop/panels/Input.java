@@ -11,7 +11,7 @@ import javax.swing.border.TitledBorder;
 
 public class Input extends JPanel implements ActionListener {
 
-    private JTextField[] field;
+    private JTextField[] fields;
     private JButton check;
 
     public Input() {
@@ -22,7 +22,7 @@ public class Input extends JPanel implements ActionListener {
         check = new JButton("Check Answer");
         check.addActionListener(this);
 
-        add(check);
+        add(check, BorderLayout.CENTER);
     }
 
     @Override
