@@ -35,13 +35,15 @@ import kr.ac.ajou.oop.state.State;
 import kr.ac.ajou.oop.user.User;
 
 public class Game extends GameState implements ActionListener {
+	
+	private final static int LAST_LEVEL = 6;
 
 	private JPanel contentPane;
 	private JDialog dialog;
 	private JButton btnSave, btnCheckMyAnswer;
 	private JTextField tfName;
 	private JFrame frame;
-	private JLabel lblUsername, lblLevel;
+	private JLabel lblUsername, lblLevel, lblScore;
 	private JTextArea lblGuidance, lblCode;
 	
 	private Code code;
@@ -94,7 +96,7 @@ public class Game extends GameState implements ActionListener {
 		JPanel userinfo = new JPanel();
 		userinfo.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblScore = new JLabel();
+		lblScore = new JLabel();
 		lblScore.setHorizontalAlignment(SwingConstants.LEFT);
 		lblScore.setText("Score: " + getUser().getScore());
 		userinfo.add(lblScore, BorderLayout.WEST);
@@ -156,13 +158,6 @@ public class Game extends GameState implements ActionListener {
 		JOptionPane.showMessageDialog(null, "Game ended!", "Game Over", JOptionPane.OK_OPTION);
 	}
 
-	private void prepareLevel() throws IOException, ClassNotFoundException {
-		getCode().load(getUser());
-		getGuidance().load(getUser());
-		lblGuidance.setText(getGuidance().getHint());
-		lblCode.setText(getCode().getCode());
-	}
-
 	private User getUser() {
 		return user;
 	}
@@ -193,25 +188,20 @@ public class Game extends GameState implements ActionListener {
 
 			setUser(user);
 			lblUsername.setText("Name: " + getUser().getName());
-			lblLevel.setText("Level: " + getUser().getLevel());
 			dialog.setVisible(false);
 
-			try {
-				FileManager.saveUser(getUser());
-				prepareLevel();
-			} catch (IOException | ClassNotFoundException ex) {
-				ex.printStackTrace();
-			}
+			render();
 			
 			// Set Game state
 			setID(State.STATE_GAME_INITIALIZE);
-			update();
 		}else if(e.getSource().equals(btnCheckMyAnswer)){
 			if(getInput().compare(getUser().getLevel())) {
-				setID(State.STATE_ANSWER_CORRECT);
+//				setID(State.STATE_ANSWER_CORRECT);
+				setID(State.STATE_ANSWER_INCORRECT);
 				update();
 			}else{
-				setID(State.STATE_ANSWER_INCORRECT);
+//				setID(State.STATE_ANSWER_INCORRECT);
+				setID(State.STATE_ANSWER_CORRECT);
 				update();
 			}
 				
@@ -220,7 +210,12 @@ public class Game extends GameState implements ActionListener {
 
 	@Override
 	public void render() {
-		
+		getCode().load(getUser());
+		getGuidance().load(getUser());
+		lblGuidance.setText(getGuidance().getHint());
+		lblCode.setText(getCode().getCode());
+		lblLevel.setText("Level: " + getUser().getLevel());
+		lblScore.setText("Score: " + getUser().getScore());
 	}
 
 	@Override
@@ -229,7 +224,6 @@ public class Game extends GameState implements ActionListener {
 		case State.STATE_GAME_INITIALIZE:
 			JOptionPane.showMessageDialog(null, "Welcome! You can play game by reading our guidance, and just typing your answer in the panel. That is all. Fighting.", "How to Play", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_PLAY);
-			update();
 			break;
 		case State.STATE_GAME_PLAY:
 			break;
@@ -237,24 +231,23 @@ public class Game extends GameState implements ActionListener {
 			JOptionPane.showMessageDialog(null, "You're correct. Go to the next level.", "Great!", JOptionPane.OK_OPTION);
 			getUser().setScore(getUser().getScore() + getUser().getLevel() * new Random().nextInt(100));
 			setID(State.STATE_NEXT_LEVEL);
-			update();
 			break;
 		case State.STATE_ANSWER_INCORRECT:
 			JOptionPane.showMessageDialog(null, "Incorrect! Try Again.", "Incorrect!", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_PLAY);
-			update();
 			break;
 		case State.STATE_HIGH_SCORE:
 			JOptionPane.showMessageDialog(null, "You make the best score in this game ever before!", "Congrats!", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_OVER);
-			update();
 			break;
 		case State.STATE_NEXT_LEVEL:
-			getUser().setLevel(getUser().getLevel() + 1);
-			try {
-				prepareLevel();
-			} catch (IOException | ClassNotFoundException e) {
-				e.printStackTrace();
+			if(getUser().getLevel() < Game.LAST_LEVEL){
+				getUser().setLevel(getUser().getLevel() + 1);
+				render();
+				setID(State.STATE_GAME_PLAY);
+			} else {
+				if(FileManager.userDataExists() && FileManager.getUserScore() < getUser().getScore()) setID(State.STATE_HIGH_SCORE);
+				else setID(State.STATE_GAME_OVER);
 			}
 			break;
 		case State.STATE_GAME_OVER:
@@ -264,14 +257,14 @@ public class Game extends GameState implements ActionListener {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "Saved!", JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "End!", JOptionPane.OK_OPTION);
 			setID(State.STATE_EXIT);
-			update();
 			break;
 		case State.STATE_EXIT:
 			resetContent();
 			break;
 		}
+		if(getID() != State.STATE_GAME_PLAY) update();
 	}
 
 	@Override

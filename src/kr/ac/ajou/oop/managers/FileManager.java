@@ -2,10 +2,12 @@ package kr.ac.ajou.oop.managers;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
@@ -25,7 +27,7 @@ public class FileManager implements Serializable {
 		oos.close();
 	}
 
-	public static String loadGuidance(int level) throws IOException, ClassNotFoundException {
+	public static String loadGuidance(int level) throws IOException {
 
 		File file = new File("data/guidances/guidance_" + level + ".txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
@@ -54,6 +56,40 @@ public class FileManager implements Serializable {
 		
 		br.close();
 		return sb.toString();
+	}
+	
+	public static boolean userDataExists() {
+		if(new File("data/user/user.dat").exists()) return true;
+		else return false;
+	}
+	
+	public static int getUserScore(){
+		File userData = new File("data/user/user.dat");
+		FileInputStream fis;
+		ObjectInputStream ois;
+		int score;
+		
+		try {
+			fis = new FileInputStream(userData);
+			ois = new ObjectInputStream(fis);
+			
+			Object o = ois.readObject();
+			ois.close();
+			
+			if(o instanceof User) score = ((User)o).getScore();
+			else score = -1;
+		} catch (FileNotFoundException e) {
+			score = -1;
+			e.printStackTrace();
+		} catch (IOException e) {
+			score = -1;
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			score = -1;
+			e.printStackTrace();
+		}
+		
+		return score;
 	}
 
 }

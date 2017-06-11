@@ -19,9 +19,6 @@ public class Guidance extends JPanel {
         	setHint(FileManager.loadGuidance(u.getLevel()));
     	}catch(IOException e) {
     		e.printStackTrace();
-    	} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
     }
 
