@@ -7,6 +7,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import kr.ac.ajou.oop.launcher.Game;
@@ -34,9 +35,12 @@ public class Input extends JPanel implements ActionListener {
     }
     
     public boolean compare(int level) {
+
     	if(level == 1){
     		
-    		
+        	FileReader fReader = new FileReader("text.txt"); // level 1의 answer txt
+            BufferedReader br = new BufferedReader(fReader);
+            
     		JLabel lblAnswer = new JLabel("Answer1:");
     		JTextField answer_1 = new JTextField();
     		answer_1.setColumns(10);
@@ -47,13 +51,16 @@ public class Input extends JPanel implements ActionListener {
     		answer_2.setColumns(10);
     		
     		
+            String s;
+            while((s = br.readLine()) != null){
     		
-    		if(answer_1.getText() ==  // text 파일 읽어서 compare){
+    		if(answer_1.getText()==s && answer_2.getText() == s){
     			return true;
     		}
     		else
     			return false;
-    		
+            }
+            
       	}
 
     	
@@ -65,7 +72,6 @@ public class Input extends JPanel implements ActionListener {
     		scrollPane.add(textArea);
     		
     		setPreferredSize(new Dimension(450, 110));
-    		
     		
     	}
     	
@@ -135,12 +141,11 @@ public class Input extends JPanel implements ActionListener {
     
     }
     	
-    }
+    
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(compare(g.getUser().getLevel())==true) {
-
 				g.setID(State.STATE_ANSWER_CORRECT);
 				g.update();
 		}else{
