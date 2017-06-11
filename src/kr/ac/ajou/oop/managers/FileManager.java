@@ -91,5 +91,36 @@ public class FileManager implements Serializable {
 		
 		return score;
 	}
+	
+	public static int getTFAmount(int level) {
+		File data = new File("data/elements/elements.txt");
+		int rAmount;
+
+		String line;
+		StringBuilder sb = new StringBuilder();
+		
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(data));
+			
+			while((line = br.readLine()) != null) {
+				sb.append(line);
+				sb.append(System.lineSeparator());
+			}
+			
+			rAmount = Integer.parseInt(sb.toString().split(" ")[level-1]);
+		} catch(NumberFormatException e) {
+			rAmount = -1;
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			rAmount = -1;
+			e.printStackTrace();
+		} catch (IOException e) {
+			rAmount = -1;
+			e.printStackTrace();
+		}
+		
+		return rAmount;
+	}
 
 }
