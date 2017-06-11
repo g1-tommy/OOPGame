@@ -66,11 +66,28 @@ public class Game extends GameState implements ActionListener {
 		frame = new JFrame("OOP Education Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(50, 50, 1100, 800);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		
 		user = new User();
+		userpanel = new UserPanel(user);
+		
+		guidance = new Guidance();
+		code = new Code();
+		situation = new Situation();
+		input = new Input(this);
+		
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(userpanel, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE).addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(guidance, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(input, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(situation, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)).addPreferredGap(ComponentPlacement.RELATED).addComponent(code, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))).addContainerGap()));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addGap(5).addComponent(userpanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup().addComponent(guidance, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE).addPreferredGap(ComponentPlacement.RELATED).addComponent(situation, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addComponent(input, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)).addComponent(code, GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)).addContainerGap()));
+		contentPane.setLayout(gl_contentPane);
+		
+		setDialog();
+	}
+
+	public void setDialog() {
 		dialog = new JDialog(frame, true);
 		JPanel userInfo = new JPanel();
 		JLabel childlblName = new JLabel("Your name:");
@@ -82,25 +99,16 @@ public class Game extends GameState implements ActionListener {
 		userInfo.add(childlblName, BorderLayout.WEST);
 		userInfo.add(tfName, BorderLayout.CENTER);
 		userInfo.add(btnSave, BorderLayout.EAST);
-
-		userpanel = new UserPanel(user);
-		
-		guidance = new Guidance();
-		code = new Code();
-		situation = new Situation();
-		input = new Input(this);
-		
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(userpanel, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE).addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(guidance, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(input, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(situation, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)).addPreferredGap(ComponentPlacement.RELATED).addComponent(code, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))).addContainerGap()));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addGap(5).addComponent(userpanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup().addComponent(guidance, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE).addPreferredGap(ComponentPlacement.RELATED).addComponent(situation, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addComponent(input, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)).addComponent(code, GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)).addContainerGap()));
-		
-		contentPane.setLayout(gl_contentPane);
 		
 		dialog.getContentPane().add(userInfo);
 		dialog.setBounds(100, 100, 450, 300);
 		dialog.setSize(300, 60);
 		dialog.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		dialog.setVisible(true);
+	}
+	
+	public User getUser() {
+		return user;
 	}
 	
 	private void gameOver() {
@@ -189,10 +197,6 @@ public class Game extends GameState implements ActionListener {
 	@Override
 	public void resetContent() {
 		System.exit(1);
-	}
-
-	public User getUser() {
-		return user;
 	}
 
 }
