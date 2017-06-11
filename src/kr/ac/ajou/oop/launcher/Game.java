@@ -211,7 +211,6 @@ public class Game extends GameState implements ActionListener {
 
 	@Override
 	public void render() {
-		System.out.println(FileManager.getTFAmount(getUser().getLevel()));
 		getCode().load(getUser());
 		getGuidance().load(getUser());
 		lblGuidance.setText(getGuidance().getHint());
