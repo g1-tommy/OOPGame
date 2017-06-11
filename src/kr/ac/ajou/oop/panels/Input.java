@@ -47,12 +47,14 @@ public class Input extends JPanel implements ActionListener {
     		answer_2.setColumns(10);
     		
     		
-//    		if(answer_1.getText() ==  // text 파일 읽어서 compare){
-//    			return true;
-//    		}
     		
+    		if(answer_1.getText() ==  // text 파일 읽어서 compare){
+    			return true;
+    		}
+    		else
+    			return false;
     		
-    	}
+      	}
 
     	
     	else if(level == 2){
@@ -130,20 +132,20 @@ public class Input extends JPanel implements ActionListener {
     	}
     	
     	
-    	return false;
+    
     }
-    	return false;
+    	
     }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(compare(g.getUser().getLevel())) {
-//			g.setID(State.STATE_ANSWER_CORRECT);
-			g.setID(State.STATE_ANSWER_INCORRECT);
-			g.update();
+		if(compare(g.getUser().getLevel())==true) {
+
+				g.setID(State.STATE_ANSWER_CORRECT);
+				g.update();
 		}else{
-//			g.setID(State.STATE_ANSWER_INCORRECT);
-			g.setID(State.STATE_ANSWER_CORRECT);
+			g.setID(State.STATE_ANSWER_INCORRECT);
+
 			g.update();
 		}
 	}
