@@ -151,6 +151,7 @@ public class Input extends JPanel implements ActionListener {
 		}else{
 			g.setID(State.STATE_ANSWER_INCORRECT);
 
+			
 			g.update();
 		}
 	}
