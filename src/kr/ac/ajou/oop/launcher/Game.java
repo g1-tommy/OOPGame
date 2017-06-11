@@ -35,7 +35,7 @@ public class Game extends GameState implements ActionListener {
 
 	private JPanel contentPane;
 	private JDialog dialog;
-	private JButton btnSave, btnCheckMyAnswer;
+	private JButton btnSave;
 	private JTextField tfName;
 	private JFrame frame;
 	
@@ -88,18 +88,12 @@ public class Game extends GameState implements ActionListener {
 		guidance = new Guidance();
 		code = new Code();
 		situation = new Situation();
-		input = new Input();
+		input = new Input(this);
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(userpanel, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE).addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(guidance, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(input, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(situation, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)).addPreferredGap(ComponentPlacement.RELATED).addComponent(code, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))).addContainerGap()));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addGap(5).addComponent(userpanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup().addComponent(guidance, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE).addPreferredGap(ComponentPlacement.RELATED).addComponent(situation, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addComponent(input, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)).addComponent(code, GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)).addContainerGap()));
 		
-		btnCheckMyAnswer = new JButton("Check my Answer");
-		btnCheckMyAnswer.addActionListener(this);
-		GroupLayout gl_input = new GroupLayout(input);
-		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(287, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
-		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
-		input.setLayout(gl_input);
 		contentPane.setLayout(gl_contentPane);
 		
 		dialog.getContentPane().add(userInfo);
@@ -130,17 +124,6 @@ public class Game extends GameState implements ActionListener {
 			// Set Game state
 			setID(State.STATE_GAME_INITIALIZE);
 			update();
-		}else if(e.getSource().equals(btnCheckMyAnswer)){
-			if(input.compare(user.getLevel())) {
-//				setID(State.STATE_ANSWER_CORRECT);
-				setID(State.STATE_ANSWER_INCORRECT);
-				update();
-			}else{
-//				setID(State.STATE_ANSWER_INCORRECT);
-				setID(State.STATE_ANSWER_CORRECT);
-				update();
-			}
-				
 		}
 	}
 
@@ -206,6 +189,10 @@ public class Game extends GameState implements ActionListener {
 	@Override
 	public void resetContent() {
 		System.exit(1);
+	}
+
+	public User getUser() {
+		return user;
 	}
 
 }
