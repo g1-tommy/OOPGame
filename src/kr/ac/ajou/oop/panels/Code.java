@@ -1,9 +1,11 @@
 package kr.ac.ajou.oop.panels;
 
+import java.awt.SystemColor;
 import java.io.IOException;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.border.TitledBorder;
 
 import kr.ac.ajou.oop.managers.FileManager;
 import kr.ac.ajou.oop.user.User;
@@ -11,14 +13,19 @@ import kr.ac.ajou.oop.user.User;
 @SuppressWarnings("serial")
 public class Code extends JPanel {
 
-	private JLabel lblCode;
-    private String code;
+	private JTextArea lblCode;
+	private String code;
     
     public Code() {
+    	setBorder(new TitledBorder(null, "Code", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblCode = new JTextArea();
+		lblCode.setEditable(false);
+		lblCode.setHighlighter(null);
+		lblCode.setBackground(SystemColor.window);
+		add(lblCode);
     }
 
     public boolean compare(int level) {
-    	lblCode.setText(getCode());
         return false;
     }
 
@@ -36,7 +43,11 @@ public class Code extends JPanel {
 
     public void setCode(String code) {
         this.code = code;
+        lblCode.setText(this.code);
     }
     
+    public JTextArea getLblCode() {
+		return lblCode;
+	}
 
 }

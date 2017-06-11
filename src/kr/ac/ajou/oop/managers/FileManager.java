@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.io.StreamCorruptedException;
 
 import kr.ac.ajou.oop.user.User;
 
@@ -78,6 +79,9 @@ public class FileManager implements Serializable {
 			
 			if(o instanceof User) score = ((User)o).getScore();
 			else score = -1;
+		} catch (StreamCorruptedException e) {
+			score = -1;
+			e.printStackTrace();
 		} catch (FileNotFoundException e) {
 			score = -1;
 			e.printStackTrace();
@@ -87,7 +91,7 @@ public class FileManager implements Serializable {
 		} catch (ClassNotFoundException e) {
 			score = -1;
 			e.printStackTrace();
-		}
+		} 
 		
 		return score;
 	}
