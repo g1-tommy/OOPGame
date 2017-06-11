@@ -194,6 +194,7 @@ public class Game extends GameState implements ActionListener {
 			
 			// Set Game state
 			setID(State.STATE_GAME_INITIALIZE);
+			update();
 		}else if(e.getSource().equals(btnCheckMyAnswer)){
 			if(getInput().compare(getUser().getLevel())) {
 //				setID(State.STATE_ANSWER_CORRECT);
