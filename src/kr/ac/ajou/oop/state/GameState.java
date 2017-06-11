@@ -2,7 +2,7 @@ package kr.ac.ajou.oop.state;
 
 public abstract class GameState {
 
-    private int stateID;
+    private int stateID = State.STATE_GAME_READY;
 
     public abstract void render();
     public abstract void update();
