@@ -34,6 +34,104 @@ public class Input extends JPanel implements ActionListener {
     }
     
     public boolean compare(int level) {
+    	if(level == 1){
+    		
+    		
+    		JLabel lblAnswer = new JLabel("Answer1:");
+    		JTextField answer_1 = new JTextField();
+    		answer_1.setColumns(10);
+    		
+    		
+    		JLabel lblAnswer_1 = new JLabel("Answer2:");
+    		JTextField answer_2 = new JTextField();
+    		answer_2.setColumns(10);
+    		
+    		
+//    		if(answer_1.getText() ==  // text 파일 읽어서 compare){
+//    			return true;
+//    		}
+    		
+    		
+    	}
+
+    	
+    	else if(level == 2){
+    		
+    		JTextArea textArea = new JTextArea(5, 30);
+    	
+    		JScrollPane scrollPane = new JScrollPane();
+    		scrollPane.add(textArea);
+    		
+    		setPreferredSize(new Dimension(450, 110));
+    		
+    		
+    	}
+    	
+    	else if(level ==3){
+    		
+    		JLabel lblAnswer = new JLabel("Answer1:");
+    		JTextField answer_1 = new JTextField();
+    		answer_1.setColumns(10);
+    		
+    		
+    		JLabel lblAnswer_1 = new JLabel("Answer2:");
+    		JTextField answer_2 = new JTextField();
+    		answer_2.setColumns(10);
+    		
+    	}
+    	
+    	
+    	else if(level ==3){
+    		JLabel lblAnswer = new JLabel("Answer1:");
+    		JTextField answer_1 = new JTextField();
+    		answer_1.setColumns(10);
+    		
+    		
+    		JLabel lblAnswer_1 = new JLabel("Answer2:");
+    		JTextField answer_2 = new JTextField();
+    		answer_2.setColumns(10);
+    	}
+    	
+    	
+    	else if(level ==4){
+    		JLabel lblAnswer = new JLabel("Answer1:");
+    		JTextField answer_1 = new JTextField();
+    		answer_1.setColumns(10);
+    		
+    		
+    		JLabel lblAnswer_1 = new JLabel("Answer2:");
+    		JTextField answer_2 = new JTextField();
+    		answer_2.setColumns(10);
+    		
+    	}
+    	
+    	
+    	else if(level==5){
+    		JLabel lblAnswer = new JLabel("Answer1:");
+    		JTextField answer_1 = new JTextField();
+    		answer_1.setColumns(10);
+    		
+    		
+    		JLabel lblAnswer_1 = new JLabel("Answer2:");
+    		JTextField answer_2 = new JTextField();
+    		answer_2.setColumns(10);
+    	}
+    	
+    	
+    	else if(level==6){
+    		JLabel lblAnswer = new JLabel("Answer1:");
+    		JTextField answer_1 = new JTextField();
+    		answer_1.setColumns(10);
+    		
+    		
+    		JLabel lblAnswer_1 = new JLabel("Answer2:");
+    		JTextField answer_2 = new JTextField();
+    		answer_2.setColumns(10);
+    	}
+    	
+    	
+    	return false;
+    }
     	return false;
     }
 
