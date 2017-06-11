@@ -8,4 +8,8 @@ public class Input extends JPanel{
     public Input() {
     }
     
+    public boolean compare(int level) {
+    	return false;
+    }
+    
 }

@@ -38,10 +38,10 @@ public class Game extends GameState implements ActionListener {
 
 	private JPanel contentPane;
 	private JDialog dialog;
-	private JButton btnSave;
+	private JButton btnSave, btnCheckMyAnswer;
 	private JTextField tfName;
 	private JFrame frame;
-	private JLabel lblUsername;
+	private JLabel lblUsername, lblLevel;
 	private JTextArea lblGuidance, lblCode;
 	
 	private Code code;
@@ -49,11 +49,9 @@ public class Game extends GameState implements ActionListener {
 	private Input input;
 	private Guidance guidance;
 	private User user;
-
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -67,9 +65,6 @@ public class Game extends GameState implements ActionListener {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Game() {
 		frame = new JFrame("OOP Education Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,7 +99,7 @@ public class Game extends GameState implements ActionListener {
 		lblScore.setText("Score: " + getUser().getScore());
 		userinfo.add(lblScore, BorderLayout.WEST);
 		
-		JLabel lblLevel = new JLabel();
+		lblLevel = new JLabel();
 		lblLevel.setText("Level: " + getUser().getLevel());
 		lblLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		userinfo.add(lblLevel, BorderLayout.CENTER);
@@ -126,37 +121,8 @@ public class Game extends GameState implements ActionListener {
 		JPanel input = new JPanel();
 		input.setBorder(new TitledBorder(null, "Input", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(userinfo, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(guidance, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
-								.addComponent(input, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
-								.addComponent(situation, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(code, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)))
-					.addContainerGap())
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(5)
-					.addComponent(userinfo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addComponent(guidance, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(situation, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(input, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
-						.addComponent(code, GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE))
-					.addContainerGap())
-		);
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(userinfo, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE).addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(guidance, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(input, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(situation, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)).addPreferredGap(ComponentPlacement.RELATED).addComponent(code, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))).addContainerGap()));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addGap(5).addComponent(userinfo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup().addComponent(guidance, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE).addPreferredGap(ComponentPlacement.RELATED).addComponent(situation, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addComponent(input, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)).addComponent(code, GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)).addContainerGap()));
 		
 		lblCode = new JTextArea();
 		lblCode.setEditable(false);
@@ -170,20 +136,11 @@ public class Game extends GameState implements ActionListener {
 		lblGuidance.setBackground(SystemColor.window);
 		guidance.add(lblGuidance);
 		
-		JButton btnCheckMyAnswer = new JButton("Check my Answer");
+		btnCheckMyAnswer = new JButton("Check my Answer");
+		btnCheckMyAnswer.addActionListener(this);
 		GroupLayout gl_input = new GroupLayout(input);
-		gl_input.setHorizontalGroup(
-			gl_input.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_input.createSequentialGroup()
-					.addContainerGap(287, Short.MAX_VALUE)
-					.addComponent(btnCheckMyAnswer))
-		);
-		gl_input.setVerticalGroup(
-			gl_input.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_input.createSequentialGroup()
-					.addContainerGap(110, Short.MAX_VALUE)
-					.addComponent(btnCheckMyAnswer))
-		);
+		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(287, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
+		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
 		input.setLayout(gl_input);
 		contentPane.setLayout(gl_contentPane);
 		
@@ -221,29 +178,44 @@ public class Game extends GameState implements ActionListener {
 	private Guidance getGuidance() {
 		return guidance;
 	}
+	
+	private Input getInput() {
+		return input;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		getUser().setName(tfName.getText().toString());
-		getUser().setLevel(1);
-		getUser().setScore(0);
-		getUser().setGameOver(false);
+		if(e.getSource().equals(btnSave)){
+			getUser().setName(tfName.getText().toString());
+			getUser().setLevel(1);
+			getUser().setScore(0);
+			getUser().setGameOver(false);
 
-		setUser(user);
-		lblUsername.setText("Name: " + getUser().getName());
-		dialog.setVisible(false);
+			setUser(user);
+			lblUsername.setText("Name: " + getUser().getName());
+			lblLevel.setText("Level: " + getUser().getLevel());
+			dialog.setVisible(false);
 
-		try {
-			FileManager.saveUser(getUser());
-			prepareLevel();
-		} catch (IOException | ClassNotFoundException ex) {
-			ex.printStackTrace();
+			try {
+				FileManager.saveUser(getUser());
+				prepareLevel();
+			} catch (IOException | ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}
+			
+			// Set Game state
+			setID(State.STATE_GAME_INITIALIZE);
+			update();
+		}else if(e.getSource().equals(btnCheckMyAnswer)){
+			if(getInput().compare(getUser().getLevel())) {
+				setID(State.STATE_ANSWER_CORRECT);
+				update();
+			}else{
+				setID(State.STATE_ANSWER_INCORRECT);
+				update();
+			}
+				
 		}
-		
-		// Set Game state
-		setID(State.STATE_GAME_INITIALIZE);
-		
 	}
 
 	@Override
@@ -255,21 +227,27 @@ public class Game extends GameState implements ActionListener {
 	public void update() {
 		switch (getID()) {
 		case State.STATE_GAME_INITIALIZE:
+			JOptionPane.showMessageDialog(null, "Welcome! You can play game by reading our guidance, and just typing your answer in the panel. That is all. Fighting.", "How to Play", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_PLAY);
+			update();
 			break;
 		case State.STATE_GAME_PLAY:
 			break;
 		case State.STATE_ANSWER_CORRECT:
+			JOptionPane.showMessageDialog(null, "You're correct. Go to the next level.", "Great!", JOptionPane.OK_OPTION);
 			getUser().setScore(getUser().getScore() + getUser().getLevel() * new Random().nextInt(100));
 			setID(State.STATE_NEXT_LEVEL);
+			update();
 			break;
 		case State.STATE_ANSWER_INCORRECT:
 			JOptionPane.showMessageDialog(null, "Incorrect! Try Again.", "Incorrect!", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_PLAY);
+			update();
 			break;
 		case State.STATE_HIGH_SCORE:
 			JOptionPane.showMessageDialog(null, "You make the best score in this game ever before!", "Congrats!", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_OVER);
+			update();
 			break;
 		case State.STATE_NEXT_LEVEL:
 			getUser().setLevel(getUser().getLevel() + 1);
@@ -284,11 +262,11 @@ public class Game extends GameState implements ActionListener {
 			try {
 				FileManager.saveUser(getUser());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "Saved!", JOptionPane.OK_OPTION);
 			setID(State.STATE_EXIT);
+			update();
 			break;
 		case State.STATE_EXIT:
 			resetContent();
@@ -300,4 +278,5 @@ public class Game extends GameState implements ActionListener {
 	public void resetContent() {
 		System.exit(1);
 	}
+
 }

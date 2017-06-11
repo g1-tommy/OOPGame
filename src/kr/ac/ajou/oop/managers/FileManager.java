@@ -17,17 +17,17 @@ public class FileManager implements Serializable {
 	private FileManager() {}
 
 	public static void saveUser(User u) throws IOException {
-		FileOutputStream fos = new FileOutputStream("user.dat");
+		File dir = new File("data/user/");
+		if(!dir.exists()) dir.mkdir();
+		FileOutputStream fos = new FileOutputStream("data/user/user.dat");
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
-
 		oos.writeObject(u);
-		
 		oos.close();
 	}
 
 	public static String loadGuidance(int level) throws IOException, ClassNotFoundException {
 
-		File file = new File("data/guidance_" + level + ".txt");
+		File file = new File("data/guidances/guidance_" + level + ".txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		StringBuilder sb = new StringBuilder();
 		String line;
@@ -42,7 +42,7 @@ public class FileManager implements Serializable {
 	}
 
 	public static String loadAnswerCode(int level) throws FileNotFoundException, IOException {
-		File file = new File("data/answer_" + level + ".txt");
+		File file = new File("data/answers/answer_" + level + ".txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		StringBuilder sb = new StringBuilder();
 		String line;
