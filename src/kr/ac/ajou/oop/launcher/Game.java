@@ -28,6 +28,7 @@ import kr.ac.ajou.oop.panels.UserPanel;
 import kr.ac.ajou.oop.state.GameState;
 import kr.ac.ajou.oop.state.State;
 import kr.ac.ajou.oop.user.User;
+import java.awt.SystemColor;
 
 public class Game extends GameState implements ActionListener {
 	
@@ -76,7 +77,9 @@ public class Game extends GameState implements ActionListener {
 		userpanel = new UserPanel(user);
 		
 		guidance = new Guidance();
+		guidance.getLblGuidance().setBackground(SystemColor.control);
 		code = new Code();
+		code.getLblCode().setBackground(SystemColor.control);
 		situation = new Situation();
 		input = new Input(this);
 		
