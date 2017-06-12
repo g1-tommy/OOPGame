@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -57,6 +58,22 @@ public class FileManager implements Serializable {
 		
 		br.close();
 		return sb.toString();
+	}
+	
+	public static ArrayList<String> answers(int level) throws IOException {
+		
+		File file = new File("data/answer/answer_" + level + ".txt");
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		ArrayList<String> answerSet = new ArrayList<String>();
+		String line;
+		
+		while((line = br.readLine()) != null) {
+			answerSet.add(line);
+		}
+		
+		br.close();
+		
+		return answerSet;
 	}
 	
 	public static String loadAnswerCode(int level) throws FileNotFoundException, IOException {
