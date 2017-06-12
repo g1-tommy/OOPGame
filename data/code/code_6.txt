@@ -1,6 +1,6 @@
 class Character
 {
-//example code
+	//example code
 
   Public void Move(){}
   Public void Shoot(){}

@@ -1,0 +1,4 @@
+private
+set
+age > 0
+get

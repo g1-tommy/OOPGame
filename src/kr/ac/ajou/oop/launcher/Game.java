@@ -77,15 +77,15 @@ public class Game extends GameState implements ActionListener {
 		userpanel = new UserPanel(user);
 		
 		guidance = new Guidance();
-		guidance.getLblGuidance().setBackground(SystemColor.control);
 		code = new Code();
-		code.getLblCode().setBackground(SystemColor.control);
 		situation = new Situation();
+		
 		input = new Input(this);
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(userpanel, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE).addGroup(gl_contentPane.createSequentialGroup().addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(guidance, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(input, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE).addComponent(situation, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)).addPreferredGap(ComponentPlacement.RELATED).addComponent(code, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))).addContainerGap()));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane.createSequentialGroup().addGap(5).addComponent(userpanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup().addComponent(guidance, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE).addPreferredGap(ComponentPlacement.RELATED).addComponent(situation, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE).addPreferredGap(ComponentPlacement.RELATED).addComponent(input, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)).addComponent(code, GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)).addContainerGap()));
+		
 		contentPane.setLayout(gl_contentPane);
 		
 		setDialog();
@@ -146,6 +146,7 @@ public class Game extends GameState implements ActionListener {
 		situation.load(user);
 		guidance.getLblGuidance().setText(guidance.getHint());
 		code.getLblCode().setText(code.getCode());
+		input.setComponents();
 		userpanel.getLblLevel().setText("Level: " + user.getLevel());
 		userpanel.getLblScore().setText("Score: " + user.getScore());
 	}
@@ -205,5 +206,4 @@ public class Game extends GameState implements ActionListener {
 	public void resetContent() {
 		System.exit(1);
 	}
-
 }
