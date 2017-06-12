@@ -35,7 +35,7 @@ public class FileManager implements Serializable {
 	public static Image loadImage(int level) throws IOException
 	{
 		BufferedImage image;
-		String filename = "data/Images/Image_" + level + ".png";
+		String filename = "data/images/image_" + level + ".png";
 		
 		image = ImageIO.read(new File(filename));	
 		
