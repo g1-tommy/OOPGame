@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -27,7 +26,7 @@ public class Input extends JPanel implements ActionListener {
 	private JTextField[] tfAnswer;
 	private JComboBox[] ishas;
 	private ArrayList arr;
-	
+
 	public Input(Game g) {
 		this.g = g;
 
@@ -51,6 +50,7 @@ public class Input extends JPanel implements ActionListener {
 			if (g.getUser().getLevel() == 2) {
 				String[] s = { "is", "has" };
 				ishas[i] = new JComboBox(s);
+
 				add(ishas[i]);
 			} else {
 				tfAnswer[i] = new JTextField(10);
@@ -63,7 +63,20 @@ public class Input extends JPanel implements ActionListener {
 	public boolean compare(int level) {
 		try {
 			arr = FileManager.answers(level);
-			
+			if (g.getUser().getLevel() == 2) {
+				for (int i = 0; i < inputs.length; i++) {
+					if (!tfAnswer[i].getText().equals(arr.get(i)))
+						return false;
+				}
+				return true;
+			} else {
+				for (int i = 0; i < inputs.length; i++) {
+					if (ishas[i].getItemAt(i).equals(arr.get(i)))
+						return true;
+				}
+				return true;
+			}
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,7 +86,7 @@ public class Input extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (compare(g.getUser().getLevel()) == true) {
+		if (g.getUser().getLevel() == 1||compare(g.getUser().getLevel()) == true ) {
 			g.setID(State.STATE_ANSWER_CORRECT);
 			g.update();
 		} else {
