@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.io.IOException;
 
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 import kr.ac.ajou.oop.managers.FileManager;
 import kr.ac.ajou.oop.user.User;
@@ -12,7 +13,9 @@ import kr.ac.ajou.oop.user.User;
 public class Situation extends JPanel
 {
 	private Image img;
-	public Situation(){}
+	public Situation(){
+		setBorder(new TitledBorder(null, "Situation", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+	}
 	
 	public void load(User u)
 	{

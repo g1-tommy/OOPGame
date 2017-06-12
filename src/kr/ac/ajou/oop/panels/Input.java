@@ -36,11 +36,8 @@ public class Input extends JPanel implements ActionListener {
 		btnCheckMyAnswer.addActionListener(this);
 
 		GroupLayout gl_input = new GroupLayout(this);
-		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
-				gl_input.createSequentialGroup().addContainerGap(287, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
-		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
-				gl_input.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
-
+		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(287, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
+		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
 		setLayout(gl_input);
 	}
 
@@ -73,7 +70,7 @@ public class Input extends JPanel implements ActionListener {
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} // level 1ÀÇ answer txt
+			} // level 1ï¿½ï¿½ answer txt
 			catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
