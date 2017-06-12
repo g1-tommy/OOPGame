@@ -24,7 +24,7 @@ public class Situation extends JPanel
 		try {
 			setImg(FileManager.loadImage(u.getLevel()));
 		} catch (IOException e) {
-			e.printStackTrace();//
+			e.printStackTrace();
 		}
 	}
 
