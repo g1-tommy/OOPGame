@@ -1,3 +1,0 @@
-﻿Polymorphism means that upper class can reference lower class's instance.
-
-Then, Character Class can reference Punch() of Gorila and Enemy!

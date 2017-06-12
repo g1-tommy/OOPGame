@@ -1,7 +1,0 @@
-﻿So, why we have to use encapsulation? For security. And there are three steps for encapsulation.
-
-First step : make all instance variable 'private'
-Second step : make 'Getter and Setter'
-Last step : Put 'Guardian' in the Setter.
-
-So, do it for other variables!
