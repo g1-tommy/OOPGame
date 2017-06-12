@@ -28,10 +28,9 @@ import kr.ac.ajou.oop.panels.UserPanel;
 import kr.ac.ajou.oop.state.GameState;
 import kr.ac.ajou.oop.state.State;
 import kr.ac.ajou.oop.user.User;
-import java.awt.Font;
 
 public class Game extends GameState implements ActionListener {
-
+	
 	private final static int LAST_LEVEL = 6;
 
 	private JPanel contentPane;
@@ -39,6 +38,7 @@ public class Game extends GameState implements ActionListener {
 	private JButton btnSave;
 	private JTextField tfName;
 	private JFrame frame;
+	
 	private Code code;
 	private Input input;
 	private Guidance guidance;
@@ -46,7 +46,7 @@ public class Game extends GameState implements ActionListener {
 	
 	private User user;
 	private UserPanel userpanel;
-
+	
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
@@ -60,9 +60,9 @@ public class Game extends GameState implements ActionListener {
 				}
 			}
 		});
+		
 	}
 
-	
 	public Game() {
 		frame = new JFrame("OOP Education Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,7 +71,7 @@ public class Game extends GameState implements ActionListener {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
-
+		
 		user = new User();
 		userpanel = new UserPanel(user);
 		
@@ -96,24 +96,26 @@ public class Game extends GameState implements ActionListener {
 		tfName = new JTextField(10);
 		btnSave = new JButton("Save");
 		btnSave.addActionListener(this);
-
+	
 		userInfo.add(childlblName, BorderLayout.WEST);
 		userInfo.add(tfName, BorderLayout.CENTER);
 		userInfo.add(btnSave, BorderLayout.EAST);
-
+		
 		dialog.getContentPane().add(userInfo);
 		dialog.setBounds(100, 100, 450, 300);
 		dialog.setSize(300, 60);
 		dialog.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		dialog.setVisible(true);
 	}
-
-
+	
+	public User getUser() {
+		return user;
+	}
+	
 	private void gameOver() {
 		user.setGameOver(true);
 		JOptionPane.showMessageDialog(null, "Game ended!", "Game Over", JOptionPane.OK_OPTION);
 	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -127,11 +129,10 @@ public class Game extends GameState implements ActionListener {
 			dialog.setVisible(false);
 
 			render();
-
+			
 			// Set Game state
 			setID(State.STATE_GAME_INITIALIZE);
 			update();
-
 		}
 	}
 
@@ -149,9 +150,7 @@ public class Game extends GameState implements ActionListener {
 	public void update() {
 		switch (getID()) {
 		case State.STATE_GAME_INITIALIZE:
-			JOptionPane.showMessageDialog(null,
-					"Welcome! You can play game by reading our guidance, and just typing your answer in the panel. That is all. Fighting.",
-					"How to Play", JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null, "Welcome! You can play game by reading our guidance, and just typing your answer in the panel. That is all. Fighting.", "How to Play", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_PLAY);
 			break;
 		case State.STATE_GAME_PLAY:
@@ -166,8 +165,7 @@ public class Game extends GameState implements ActionListener {
 			setID(State.STATE_GAME_PLAY);
 			break;
 		case State.STATE_HIGH_SCORE:
-			JOptionPane.showMessageDialog(null, "You make the best score in this game ever before!", "Congrats!",
-					JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null, "You make the best score in this game ever before!", "Congrats!", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_OVER);
 			break;
 		case State.STATE_NEXT_LEVEL:
@@ -176,7 +174,7 @@ public class Game extends GameState implements ActionListener {
 				render();
 				setID(State.STATE_GAME_PLAY);
 			} else {
-
+				userpanel.getLblScore().setText("Score: " + user.getScore());
 				if(FileManager.userDataExists() && FileManager.getUserScore() < user.getScore()) setID(State.STATE_HIGH_SCORE);
 				else setID(State.STATE_GAME_OVER);
 			}
@@ -188,25 +186,19 @@ public class Game extends GameState implements ActionListener {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "End!",
-					JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "End!", JOptionPane.OK_OPTION);
 			setID(State.STATE_EXIT);
 			break;
 		case State.STATE_EXIT:
 			resetContent();
 			break;
 		}
-		if (getID() != State.STATE_GAME_PLAY)
-			update();
+		if(getID() != State.STATE_GAME_PLAY) update();
 	}
 
 	@Override
 	public void resetContent() {
 		System.exit(1);
-	}
-	
-	public User getUser() {
-		return this.user;
 	}
 
 }
