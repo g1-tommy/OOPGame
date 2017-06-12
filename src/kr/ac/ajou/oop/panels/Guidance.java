@@ -5,7 +5,9 @@ import java.awt.SystemColor;
 import java.io.IOException;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
@@ -16,6 +18,7 @@ import kr.ac.ajou.oop.user.User;
 public class Guidance extends JPanel {
 	
 	private JTextArea lblGuidance;
+	private JScrollPane scroll;
 	private String hint;
     
     public Guidance() {
@@ -25,7 +28,12 @@ public class Guidance extends JPanel {
 		lblGuidance.setEditable(false);
 		lblGuidance.setHighlighter(null);
 		lblGuidance.setBackground(SystemColor.control);
-		add(lblGuidance);
+		
+		scroll = new JScrollPane(lblGuidance);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
+		add(scroll);
     }
 
     public void load(User u) {

@@ -2,7 +2,6 @@ package kr.ac.ajou.oop.launcher;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -70,7 +69,7 @@ public class Game extends GameState implements ActionListener {
 		frame.setBounds(50, 50, 1100, 800);
 		
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(3, 3, 3, 3));
 		frame.setContentPane(contentPane);
 		
 		user = new User();
@@ -176,7 +175,6 @@ public class Game extends GameState implements ActionListener {
 		case State.STATE_NEXT_LEVEL:
 			if(user.getLevel() < Game.LAST_LEVEL){
 				user.setLevel(user.getLevel() + 1);
-				
 				render();
 				setID(State.STATE_GAME_PLAY);
 			} else {
