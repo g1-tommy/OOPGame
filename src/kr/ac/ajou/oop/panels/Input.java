@@ -75,25 +75,25 @@ public class Input extends JPanel implements ActionListener {
 	}
 
 	public boolean compare(int level) {
-		boolean correct = false;
 		try {
 			arr = FileManager.answers(level);
+			
 			if (g.getUser().getLevel() == 2) {
 				for (int i = 0; i < arr.size(); i++) {
-					if (ishas[i].getSelectedItem().equals(arr.get(i)))
-						correct = true;
+					if (!ishas[i].getSelectedItem().equals(arr.get(i))) return false;
+						
 				}
 			} else {
 				for (int i = 0; i < arr.size(); i++) {
-					if (!tfAnswer[i].getText().equals(arr.get(i)))
-						correct = true;
+					if (!tfAnswer[i].getText().equals(arr.get(i))) return false;
+						
 				}
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return correct;
+		return true;
 	}
 
 	@Override
