@@ -58,7 +58,7 @@ public class FileManager implements Serializable {
 	}
 	
 	public static String loadAnswerCode(int level) throws FileNotFoundException, IOException {
-		File file = new File("data/answers/answer_" + level + ".txt");
+		File file = new File("data/code/code_" + level + ".txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		StringBuilder sb = new StringBuilder();
 		String line;

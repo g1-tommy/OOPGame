@@ -143,8 +143,11 @@ public class Input extends JPanel implements ActionListener {
 			JLabel lblAnswer_1 = new JLabel("Answer2:");
 			JTextField answer_2 = new JTextField();
 			answer_2.setColumns(10);
+		
+			this.add(lblAnswer);
 		}
-
+	
+		
 		return false;
 	}
 

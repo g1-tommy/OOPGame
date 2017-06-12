@@ -1,0 +1,12 @@
+class Enemy
+{
+ 
+}
+
+class _________
+{
+
+  public static void main(String[] args) {
+    _______ ______ = new ______( );
+  }
+}       
