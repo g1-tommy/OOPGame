@@ -1,5 +1,7 @@
 package kr.ac.ajou.oop.managers;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +12,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.io.StreamCorruptedException;
+
+import javax.imageio.ImageIO;
 
 import kr.ac.ajou.oop.user.User;
 
@@ -26,8 +29,18 @@ public class FileManager implements Serializable {
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(u);
 		oos.close();
+	}	
+	
+	public static Image loadImage(int level) throws IOException
+	{
+		BufferedImage image;
+		String filename = "data/Images/Image_" + level + ".png";
+		
+		image = ImageIO.read(new File(filename));	
+		
+		return image;
 	}
-
+	
 	public static String loadGuidance(int level) throws IOException {
 
 		File file = new File("data/guidances/guidance_" + level + ".txt");
@@ -43,7 +56,7 @@ public class FileManager implements Serializable {
 		br.close();
 		return sb.toString();
 	}
-
+	
 	public static String loadAnswerCode(int level) throws FileNotFoundException, IOException {
 		File file = new File("data/answers/answer_" + level + ".txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
@@ -79,9 +92,6 @@ public class FileManager implements Serializable {
 			
 			if(o instanceof User) score = ((User)o).getScore();
 			else score = -1;
-		} catch (StreamCorruptedException e) {
-			score = -1;
-			e.printStackTrace();
 		} catch (FileNotFoundException e) {
 			score = -1;
 			e.printStackTrace();
@@ -91,7 +101,7 @@ public class FileManager implements Serializable {
 		} catch (ClassNotFoundException e) {
 			score = -1;
 			e.printStackTrace();
-		} 
+		}
 		
 		return score;
 	}
