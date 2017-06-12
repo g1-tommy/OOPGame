@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,7 +15,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-
 import kr.ac.ajou.oop.launcher.Game;
 import kr.ac.ajou.oop.managers.FileManager;
 import kr.ac.ajou.oop.state.State;
@@ -50,7 +48,7 @@ public class Input extends JPanel implements ActionListener {
 		inputs = new JLabel[FileManager.getTFAmount(g.getUser().getLevel())];
 		tfAnswer = new JTextField[FileManager.getTFAmount(g.getUser().getLevel())];
 		for(int i = 0; i < inputs.length; i++) {
-			inputs[i] = new JLabel("Answer"+(i+1)+":\n");
+			inputs[i] = new JLabel("Answer"+(i+1)+":\n"); 
 			tfAnswer[i] = new JTextField(10);
 			add(inputs[i]);
 			add(tfAnswer[i]);
