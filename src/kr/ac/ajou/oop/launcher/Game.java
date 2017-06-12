@@ -29,6 +29,7 @@ import kr.ac.ajou.oop.state.GameState;
 import kr.ac.ajou.oop.state.State;
 import kr.ac.ajou.oop.user.User;
 import java.awt.SystemColor;
+import javax.swing.border.TitledBorder;
 
 public class Game extends GameState implements ActionListener {
 	
@@ -81,6 +82,7 @@ public class Game extends GameState implements ActionListener {
 		code = new Code();
 		code.getLblCode().setBackground(SystemColor.control);
 		situation = new Situation();
+		situation.setBorder(new TitledBorder(null, "Situation", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		input = new Input(this);
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
