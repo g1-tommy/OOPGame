@@ -1,0 +1,7 @@
+Choose the right answers:
+
+(example)
+-enemy (is) a character.	-Gorila (is/has) a character.
+-enemy (has) a baton.	-Gorila (is/has) a booster.
+-enemy (has) a knife.	-Gorila (is/has) a gun.
+-enemy (has) a blaster.
