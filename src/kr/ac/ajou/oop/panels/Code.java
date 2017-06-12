@@ -21,7 +21,7 @@ public class Code extends JPanel {
 		lblCode = new JTextArea();
 		lblCode.setEditable(false);
 		lblCode.setHighlighter(null);
-		lblCode.setBackground(SystemColor.window);
+		lblCode.setBackground(SystemColor.control);
 		add(lblCode);
     }
 

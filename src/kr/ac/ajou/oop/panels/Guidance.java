@@ -24,7 +24,7 @@ public class Guidance extends JPanel {
 		lblGuidance = new JTextArea();
 		lblGuidance.setEditable(false);
 		lblGuidance.setHighlighter(null);
-		lblGuidance.setBackground(SystemColor.window);
+		lblGuidance.setBackground(SystemColor.control);
 		add(lblGuidance);
     }
 

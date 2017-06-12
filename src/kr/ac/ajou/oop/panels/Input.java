@@ -1,6 +1,7 @@
 package kr.ac.ajou.oop.panels;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -8,8 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,10 +34,10 @@ public class Input extends JPanel implements ActionListener {
 		btnCheckMyAnswer = new JButton("Check my Answer");
 		btnCheckMyAnswer.addActionListener(this);
 
-		GroupLayout gl_input = new GroupLayout(this);
-		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(287, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
-		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
-		setLayout(gl_input);
+//		GroupLayout gl_input = new GroupLayout(this);
+//		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(287, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
+//		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
+		setLayout(new FlowLayout());
 	}
 
 	public boolean compare(int level) {

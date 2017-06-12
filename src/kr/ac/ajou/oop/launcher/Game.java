@@ -78,10 +78,9 @@ public class Game extends GameState implements ActionListener {
 		userpanel = new UserPanel(user);
 		
 		guidance = new Guidance();
-		guidance.getLblGuidance().setBackground(SystemColor.control);
 		code = new Code();
-		code.getLblCode().setBackground(SystemColor.control);
 		situation = new Situation();
+		
 		input = new Input(this);
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
