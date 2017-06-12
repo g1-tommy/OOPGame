@@ -1,3 +1,14 @@
 ﻿Polymorphism means that upper class can reference lower class's instance.
-
 Then, Character Class can reference Punch() of Gorila and Enemy!
+Then, the upper class called 'super' class
+
+look at the code and fill the blank below!!
+
+Class boss()
+{
+	public void punch()
+	{
+		____.punch();
+	}
+}
+

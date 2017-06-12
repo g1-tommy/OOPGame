@@ -4,4 +4,20 @@ First step : make all instance variable 'private'
 Second step : make 'Getter and Setter'
 Last step : Put 'Guardian' in the Setter.
 
-So, do it for other variables!
+Then, fill the blank!!
+
+_____ double weight;
+  
+	// Setter
+	public void ___ Age(int age)
+	{
+	// Guardian
+	  If(age > 0)
+	   This.age = age;
+	}
+	
+	//Getter
+	public int ___Age()
+	{
+	 return this.age;
+	}

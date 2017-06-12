@@ -1,24 +1,24 @@
-class Character
+class Character
 {
-	//example code
+	//example code
 
-  Public void Move(){}
-  Public void Shoot(){}
-  Public void Punch(){}  
+ Public void Move(){}
+ Public void Shoot(){}
+ Public void Punch(){}
 }
 
 class Gorila
 {
-    public void Punch()
-	{
-	   super.Punch();
-	}
+  public void Punch()
+	 {
+	  super.Punch();
+	 }
 }
 
 class Enemy
 {
-    public void Punch()
-	{
-	   Super.Punch();
-	}
+   public void Punch()
+	 {
+	  Super.Punch();
+	 }
 }
