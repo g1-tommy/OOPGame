@@ -26,6 +26,9 @@ public class Code extends JPanel {
     }
 
     public boolean compare(int level) {
+
+    	lblCode.setText(getCode());
+
         return false;
     }
 

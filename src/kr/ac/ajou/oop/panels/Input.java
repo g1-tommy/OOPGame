@@ -1,12 +1,19 @@
 package kr.ac.ajou.oop.panels;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
@@ -34,7 +41,7 @@ public class Input extends JPanel implements ActionListener {
     	setLayout(gl_input);
     }
     
-    public boolean compare(int level) {
+    public boolean compare(int level) throws IOException {	
 
     	if(level == 1){
     		
@@ -138,7 +145,7 @@ public class Input extends JPanel implements ActionListener {
     	}
     	
     	
-    
+    	return false;
     }
     	
     

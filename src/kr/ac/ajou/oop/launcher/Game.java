@@ -28,9 +28,10 @@ import kr.ac.ajou.oop.panels.UserPanel;
 import kr.ac.ajou.oop.state.GameState;
 import kr.ac.ajou.oop.state.State;
 import kr.ac.ajou.oop.user.User;
+import java.awt.Font;
 
 public class Game extends GameState implements ActionListener {
-	
+
 	private final static int LAST_LEVEL = 6;
 
 	private JPanel contentPane;
@@ -38,15 +39,31 @@ public class Game extends GameState implements ActionListener {
 	private JButton btnSave;
 	private JTextField tfName;
 	private JFrame frame;
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+	private JLabel lblUsername, lblLevel, lblScore;
+	private JTextArea lblGuidance, lblCode;
+
+=======
+>>>>>>> Stashed changes
 	
+>>>>>>> 403d40da4bedf38031cb918320826760153084a0
 	private Code code;
 	private Input input;
 	private Guidance guidance;
 	private Situation situation;
 	
 	private User user;
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> Stashed changes
 	private UserPanel userpanel;
 	
+>>>>>>> 403d40da4bedf38031cb918320826760153084a0
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
@@ -62,6 +79,7 @@ public class Game extends GameState implements ActionListener {
 		});
 	}
 
+	
 	public Game() {
 		frame = new JFrame("OOP Education Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +88,7 @@ public class Game extends GameState implements ActionListener {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
-		
+
 		user = new User();
 		userpanel = new UserPanel(user);
 		
@@ -95,43 +113,213 @@ public class Game extends GameState implements ActionListener {
 		tfName = new JTextField(10);
 		btnSave = new JButton("Save");
 		btnSave.addActionListener(this);
-	
+
 		userInfo.add(childlblName, BorderLayout.WEST);
 		userInfo.add(tfName, BorderLayout.CENTER);
 		userInfo.add(btnSave, BorderLayout.EAST);
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+		code = new Code();
+		suggestion = new Suggestion();
+		input = new Input();
+		guidance = new Guidance();
+
+		JPanel userinfo = new JPanel();
+		userinfo.setLayout(new BorderLayout(0, 0));
+
+		lblScore = new JLabel();
+		lblScore.setHorizontalAlignment(SwingConstants.LEFT);
+		lblScore.setText("Score: " + getUser().getScore());
+		userinfo.add(lblScore, BorderLayout.WEST);
+
+		lblLevel = new JLabel();
+		lblLevel.setText("Level: " + getUser().getLevel());
+		lblLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		userinfo.add(lblLevel, BorderLayout.CENTER);
+
+		lblUsername = new JLabel();
+		lblUsername.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblUsername.setText("Name: " + getUser().getName());
+		userinfo.add(lblUsername, BorderLayout.EAST);
+
+		JPanel guidance = new JPanel();
+		guidance.setBorder(new TitledBorder(
+				new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Guidance", TitledBorder.LEADING,
+						TitledBorder.TOP, null, new Color(0, 0, 0)),
+				"Guidance", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+
+		JPanel code = new JPanel();
+		code.setBorder(new TitledBorder(null, "Code", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+
+		JPanel situation = new JPanel();
+		situation.setBorder(new TitledBorder(null, "Situation", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+
+		JPanel input = new JPanel();
+		input.setBorder(new TitledBorder(null, "Input", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup().addContainerGap()
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(userinfo, GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(guidance, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+										.addComponent(input, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+										.addComponent(situation, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(code, GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)))
+				.addContainerGap()));
+		gl_contentPane
+				.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup().addGap(5)
+								.addComponent(userinfo,
+										GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(Alignment.TRAILING,
+												gl_contentPane.createSequentialGroup()
+														.addComponent(guidance, GroupLayout.DEFAULT_SIZE, 278,
+																Short.MAX_VALUE)
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(situation, GroupLayout.PREFERRED_SIZE, 321,
+																GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.RELATED).addComponent(input,
+																GroupLayout.PREFERRED_SIZE, 224,
+																GroupLayout.PREFERRED_SIZE))
+										.addComponent(code, GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE))
+								.addContainerGap()));
+
+		lblCode = new JTextArea();
+		lblCode.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		lblCode.setWrapStyleWord(true);
+		lblCode.setEditable(false);
+		lblCode.setHighlighter(null);
+		lblCode.setBackground(SystemColor.control);
+		code.add(lblCode);
+
+		lblGuidance = new JTextArea();
+		lblGuidance.setEditable(false);
+		lblGuidance.setHighlighter(null);
+		lblGuidance.setBackground(SystemColor.control);
+		guidance.add(lblGuidance);
+
+		btnCheckMyAnswer = new JButton("Check my Answer");
+		btnCheckMyAnswer.addActionListener(this);
+		GroupLayout gl_input = new GroupLayout(input);
+		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
+				gl_input.createSequentialGroup().addContainerGap(287, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
+		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING,
+				gl_input.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
+		input.setLayout(gl_input);
+		contentPane.setLayout(gl_contentPane);
+
+=======
+>>>>>>> Stashed changes
 		
+>>>>>>> 403d40da4bedf38031cb918320826760153084a0
 		dialog.getContentPane().add(userInfo);
 		dialog.setBounds(100, 100, 450, 300);
 		dialog.setSize(300, 60);
 		dialog.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		dialog.setVisible(true);
 	}
+<<<<<<< Updated upstream
 	
 	public User getUser() {
 		return user;
 	}
+=======
+<<<<<<< HEAD
+
+	private void gameOver() {
+		getUser().setGameOver(true);
+		JOptionPane.showMessageDialog(null, "Game ended!", "Game Over", JOptionPane.OK_OPTION);
+	}
+
+	private User getUser() {
+		return user;
+	}
+
+	private void setUser(User user) {
+		this.user = user;
+	}
+
+	private Code getCode() {
+		return code;
+	}
+
+	private Guidance getGuidance() {
+		return guidance;
+	}
+
+	private Input getInput() {
+		return input;
+=======
+	
+	public User getUser() {
+		return user;
+	}
+>>>>>>> Stashed changes
 	
 	private void gameOver() {
 		user.setGameOver(true);
 		JOptionPane.showMessageDialog(null, "Game ended!", "Game Over", JOptionPane.OK_OPTION);
+<<<<<<< Updated upstream
+=======
+>>>>>>> 403d40da4bedf38031cb918320826760153084a0
+>>>>>>> Stashed changes
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+		if (e.getSource().equals(btnSave)) {
+			getUser().setName(tfName.getText().toString());
+			getUser().setLevel(1);
+			getUser().setScore(0);
+			getUser().setGameOver(false);
+=======
+>>>>>>> Stashed changes
 		if(e.getSource().equals(btnSave)){
 			user.setName(tfName.getText().toString());
 			user.setLevel(1);
 			user.setScore(0);
 			user.setGameOver(false);
+<<<<<<< Updated upstream
+=======
+>>>>>>> 403d40da4bedf38031cb918320826760153084a0
+>>>>>>> Stashed changes
 
 			userpanel.getLblUsername().setText("Name: " + user.getName());
 			dialog.setVisible(false);
 
 			render();
-			
+
 			// Set Game state
 			setID(State.STATE_GAME_INITIALIZE);
 			update();
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+		} else if (e.getSource().equals(btnCheckMyAnswer)) {
+			if (getInput().compare(getUser().getLevel())) {
+				// setID(State.STATE_ANSWER_CORRECT);
+				setID(State.STATE_ANSWER_INCORRECT);
+				update();
+			} else {
+				// setID(State.STATE_ANSWER_INCORRECT);
+				setID(State.STATE_ANSWER_CORRECT);
+				update();
+			}
+
+=======
+>>>>>>> 403d40da4bedf38031cb918320826760153084a0
+>>>>>>> Stashed changes
 		}
 	}
 
@@ -149,14 +337,27 @@ public class Game extends GameState implements ActionListener {
 	public void update() {
 		switch (getID()) {
 		case State.STATE_GAME_INITIALIZE:
-			JOptionPane.showMessageDialog(null, "Welcome! You can play game by reading our guidance, and just typing your answer in the panel. That is all. Fighting.", "How to Play", JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null,
+					"Welcome! You can play game by reading our guidance, and just typing your answer in the panel. That is all. Fighting.",
+					"How to Play", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_PLAY);
 			break;
 		case State.STATE_GAME_PLAY:
 			break;
 		case State.STATE_ANSWER_CORRECT:
+<<<<<<< Updated upstream
 			JOptionPane.showMessageDialog(null, "You're correct. Go to the next level.", "Great!", JOptionPane.OK_OPTION);
 			user.setScore(user.getScore() + user.getLevel() * new Random().nextInt(100));
+=======
+<<<<<<< HEAD
+			JOptionPane.showMessageDialog(null, "You're correct. Go to the next level.", "Great!",
+					JOptionPane.OK_OPTION);
+			getUser().setScore(getUser().getScore() + getUser().getLevel() * new Random().nextInt(100));
+=======
+			JOptionPane.showMessageDialog(null, "You're correct. Go to the next level.", "Great!", JOptionPane.OK_OPTION);
+			user.setScore(user.getScore() + user.getLevel() * new Random().nextInt(100));
+>>>>>>> 403d40da4bedf38031cb918320826760153084a0
+>>>>>>> Stashed changes
 			setID(State.STATE_NEXT_LEVEL);
 			break;
 		case State.STATE_ANSWER_INCORRECT:
@@ -164,17 +365,38 @@ public class Game extends GameState implements ActionListener {
 			setID(State.STATE_GAME_PLAY);
 			break;
 		case State.STATE_HIGH_SCORE:
-			JOptionPane.showMessageDialog(null, "You make the best score in this game ever before!", "Congrats!", JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null, "You make the best score in this game ever before!", "Congrats!",
+					JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_OVER);
 			break;
 		case State.STATE_NEXT_LEVEL:
+<<<<<<< Updated upstream
 			if(user.getLevel() < Game.LAST_LEVEL){
 				user.setLevel(user.getLevel() + 1);
 				render();
 				setID(State.STATE_GAME_PLAY);
 			} else {
+=======
+<<<<<<< HEAD
+			if (getUser().getLevel() < Game.LAST_LEVEL) {
+				getUser().setLevel(getUser().getLevel() + 1);
+				render();
+				setID(State.STATE_GAME_PLAY);
+			} else {
+				if (FileManager.userDataExists() && FileManager.getUserScore() < getUser().getScore())
+					setID(State.STATE_HIGH_SCORE);
+				else
+					setID(State.STATE_GAME_OVER);
+=======
+			if(user.getLevel() < Game.LAST_LEVEL){
+				user.setLevel(user.getLevel() + 1);
+				render();
+				setID(State.STATE_GAME_PLAY);
+			} else {
+>>>>>>> Stashed changes
 				if(FileManager.userDataExists() && FileManager.getUserScore() < user.getScore()) setID(State.STATE_HIGH_SCORE);
 				else setID(State.STATE_GAME_OVER);
+>>>>>>> 403d40da4bedf38031cb918320826760153084a0
 			}
 			break;
 		case State.STATE_GAME_OVER:
@@ -184,14 +406,16 @@ public class Game extends GameState implements ActionListener {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "End!", JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "End!",
+					JOptionPane.OK_OPTION);
 			setID(State.STATE_EXIT);
 			break;
 		case State.STATE_EXIT:
 			resetContent();
 			break;
 		}
-		if(getID() != State.STATE_GAME_PLAY) update();
+		if (getID() != State.STATE_GAME_PLAY)
+			update();
 	}
 
 	@Override
