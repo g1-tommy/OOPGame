@@ -71,6 +71,8 @@ public class FileManager implements Serializable {
 			answerSet.add(line);
 		}
 		
+		br.close();
+		
 		return answerSet;
 	}
 	
