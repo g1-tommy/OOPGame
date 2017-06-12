@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,6 +27,7 @@ public class Input extends JPanel implements ActionListener {
 	private Game g;
 	private JLabel[] inputs;
 	private JTextField[] tfAnswer;
+	private JComboBox[] ishas;
 	
 	public Input(Game g) {
 		this.g = g;
@@ -47,11 +49,19 @@ public class Input extends JPanel implements ActionListener {
 		add(btnCheckMyAnswer);
 		inputs = new JLabel[FileManager.getTFAmount(g.getUser().getLevel())];
 		tfAnswer = new JTextField[FileManager.getTFAmount(g.getUser().getLevel())];
+		ishas = new JComboBox[FileManager.getTFAmount(g.getUser().getLevel())];
 		for(int i = 0; i < inputs.length; i++) {
 			inputs[i] = new JLabel("Answer"+(i+1)+":\n"); 
-			tfAnswer[i] = new JTextField(10);
 			add(inputs[i]);
-			add(tfAnswer[i]);
+			if(g.getUser().getLevel()==2) {
+				String[] s = {"is", "has"};
+				ishas[i] = new JComboBox(s);
+				add(ishas[i]);
+			} else {
+				tfAnswer[i] = new JTextField(10);
+				add(tfAnswer[i]);
+			}
+			
 		}
 	}
 
