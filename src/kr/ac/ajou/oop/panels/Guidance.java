@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import java.io.IOException;
 
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -22,6 +23,7 @@ public class Guidance extends JPanel {
 	private String hint;
     
     public Guidance() {
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
     	setBorder(new TitledBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Guidance", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), "Guidance", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
 		lblGuidance = new JTextArea();
@@ -30,7 +32,7 @@ public class Guidance extends JPanel {
 		lblGuidance.setBackground(SystemColor.control);
 		
 		scroll = new JScrollPane(lblGuidance);
-		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		add(scroll);

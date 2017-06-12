@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 
 import kr.ac.ajou.oop.user.User;
@@ -33,7 +34,7 @@ public class FileManager implements Serializable {
 	}	
 	
 	
-	public static Image loadImage(int level) throws IOException
+	public static Image loadImage(int level) throws IOException, IIOException
 	{
 		BufferedImage image;
 		String filename = "data/images/image_" + level + ".png";

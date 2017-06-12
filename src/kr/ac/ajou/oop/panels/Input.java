@@ -10,7 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
 
 import kr.ac.ajou.oop.launcher.Game;
@@ -20,79 +22,87 @@ import kr.ac.ajou.oop.state.State;
 @SuppressWarnings("serial")
 public class Input extends JPanel implements ActionListener {
 
+	private JPanel answers;
 	private JButton btnCheckMyAnswer;
 	private Game g;
 	private JLabel[] inputs;
 	private JTextField[] tfAnswer;
-	private JComboBox[] ishas;
-	private ArrayList arr;
+	private JComboBox<String>[] ishas;
+	private ArrayList<String> arr;
 
 	public Input(Game g) {
+		setBorder(new TitledBorder(null, "Input", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+
 		this.g = g;
 
-		setBorder(new TitledBorder(null, "Input", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-
-		btnCheckMyAnswer = new JButton("Check my Answer");
-		btnCheckMyAnswer.addActionListener(this);
-
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		answers = new JPanel();
+		answers.setLayout(new BoxLayout(answers, BoxLayout.PAGE_AXIS));
+		
+		JScrollPane scrollPane = new JScrollPane(answers);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		add(scrollPane);
 	}
 
 	public void setComponents() {
-		removeAll();
-		add(btnCheckMyAnswer);
-		inputs = new JLabel[FileManager.getTFAmount(g.getUser().getLevel())];
-		tfAnswer = new JTextField[FileManager.getTFAmount(g.getUser().getLevel())];
-		ishas = new JComboBox[FileManager.getTFAmount(g.getUser().getLevel())];
-		for (int i = 0; i < inputs.length; i++) {
-			inputs[i] = new JLabel("Answer" + (i + 1) + ":\n");
-			add(inputs[i]);
+		answers.removeAll();
+		
+		btnCheckMyAnswer = new JButton("Check my Answer");
+		btnCheckMyAnswer.addActionListener(this);
+		
+		answers.add(btnCheckMyAnswer);
+		
+		int elements = FileManager.getTFAmount(g.getUser().getLevel());
+		
+		inputs = new JLabel[elements];
+		tfAnswer = new JTextField[elements];
+		ishas = new JComboBox[elements];
+		
+		for (int i = 0; i < elements; i++) {
+			inputs[i] = new JLabel("Answer" + (i + 1) + ":");
+			answers.add(inputs[i]);
 			if (g.getUser().getLevel() == 2) {
-				String[] s = { "is", "has" };
-				ishas[i] = new JComboBox(s);
-
-				add(ishas[i]);
+				ishas[i] = new JComboBox<String>(new String[]{"is", "has"});
+				answers.add(ishas[i]);
 			} else {
 				tfAnswer[i] = new JTextField(10);
-				add(tfAnswer[i]);
+				answers.add(tfAnswer[i]);
 			}
-
 		}
+		
 	}
 
 	public boolean compare(int level) {
+		boolean correct = false;
 		try {
 			arr = FileManager.answers(level);
 			if (g.getUser().getLevel() == 2) {
-				for (int i = 0; i < inputs.length; i++) {
-					if (!tfAnswer[i].getText().equals(arr.get(i)))
-						return false;
+				for (int i = 0; i < arr.size(); i++) {
+					if (ishas[i].getSelectedItem().equals(arr.get(i)))
+						correct = true;
 				}
-				return true;
 			} else {
-				for (int i = 0; i < inputs.length; i++) {
-					if (ishas[i].getItemAt(i).equals(arr.get(i)))
-						return true;
+				for (int i = 0; i < arr.size(); i++) {
+					if (!tfAnswer[i].getText().equals(arr.get(i)))
+						correct = true;
 				}
-				return true;
 			}
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return false;
+		return correct;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (g.getUser().getLevel() == 1||compare(g.getUser().getLevel()) == true ) {
+		if (g.getUser().getLevel() == 1 || compare(g.getUser().getLevel())) {
 			g.setID(State.STATE_ANSWER_CORRECT);
-			g.update();
 		} else {
 			g.setID(State.STATE_ANSWER_INCORRECT);
-			g.update();
 		}
+		g.update();
 	}
 
 }

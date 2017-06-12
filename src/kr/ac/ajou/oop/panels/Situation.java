@@ -22,19 +22,11 @@ public class Situation extends JPanel
 	public void load(User u)
 	{
 		try {
-			setImg(FileManager.loadImage(u.getLevel()));
+			img = FileManager.loadImage(u.getLevel());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
-	public Image getImg() {
-		return img;
-	}
-
-	public void setImg(Image img) {
-		this.img = img;
-	}	
 	
 	@Override
 	public void paintComponent(Graphics g)

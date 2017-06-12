@@ -3,6 +3,7 @@ package kr.ac.ajou.oop.panels;
 import java.awt.SystemColor;
 import java.io.IOException;
 
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
@@ -17,6 +18,7 @@ public class Code extends JPanel {
 	private String code;
     
     public Code() {
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
     	setBorder(new TitledBorder(null, "Code", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		lblCode = new JTextArea();
 		lblCode.setEditable(false);
