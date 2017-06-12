@@ -36,11 +36,17 @@ public class Input extends JPanel implements ActionListener {
 
 		btnCheckMyAnswer = new JButton("Check my Answer");
 		btnCheckMyAnswer.addActionListener(this);
-		add(btnCheckMyAnswer);
+
 //		GroupLayout gl_input = new GroupLayout(this);
 //		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(287, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
 //		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
 		setLayout(new FlowLayout());
+		
+	}
+	
+	public void setComponents() {
+		removeAll();
+		add(btnCheckMyAnswer);
 		inputs = new JLabel[FileManager.getTFAmount(g.getUser().getLevel())];
 		tfAnswer = new JTextField[FileManager.getTFAmount(g.getUser().getLevel())];
 		for(int i = 0; i < inputs.length; i++) {
@@ -49,7 +55,6 @@ public class Input extends JPanel implements ActionListener {
 			add(inputs[i]);
 			add(tfAnswer[i]);
 		}
-		
 	}
 
 	public boolean compare(int level) {

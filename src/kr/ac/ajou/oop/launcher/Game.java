@@ -28,8 +28,6 @@ import kr.ac.ajou.oop.panels.UserPanel;
 import kr.ac.ajou.oop.state.GameState;
 import kr.ac.ajou.oop.state.State;
 import kr.ac.ajou.oop.user.User;
-import java.awt.SystemColor;
-import javax.swing.border.TitledBorder;
 
 public class Game extends GameState implements ActionListener {
 	
@@ -146,6 +144,7 @@ public class Game extends GameState implements ActionListener {
 		guidance.load(user);
 		guidance.getLblGuidance().setText(guidance.getHint());
 		code.getLblCode().setText(code.getCode());
+		input.setComponents();
 		userpanel.getLblLevel().setText("Level: " + user.getLevel());
 		userpanel.getLblScore().setText("Score: " + user.getScore());
 	}
@@ -204,5 +203,4 @@ public class Game extends GameState implements ActionListener {
 	public void resetContent() {
 		System.exit(1);
 	}
-
 }

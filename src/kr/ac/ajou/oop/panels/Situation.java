@@ -1,5 +1,6 @@
 package kr.ac.ajou.oop.panels;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
 
@@ -32,7 +33,15 @@ public class Situation extends JPanel
 
 	public void setImg(Image img) {
 		this.img = img;
-	}	
+	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paintComponent(g);
+	}
+	
+	
 }
 
 

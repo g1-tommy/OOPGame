@@ -122,7 +122,7 @@ public class FileManager implements Serializable {
 				sb.append(System.lineSeparator());
 			}
 			
-//			rAmount = Integer.parseInt(sb.toString().split(" ")[level-1]);
+			rAmount = Integer.parseInt(sb.toString().split(" ")[level-1]);
 		} catch(NumberFormatException e) {
 			rAmount = -1;
 			e.printStackTrace();
@@ -134,7 +134,7 @@ public class FileManager implements Serializable {
 			e.printStackTrace();
 		}
 		
-		return 2;
+		return rAmount;
 	}
 
 }
