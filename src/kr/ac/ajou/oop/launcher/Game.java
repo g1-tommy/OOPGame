@@ -175,6 +175,7 @@ public class Game extends GameState implements ActionListener {
 		case State.STATE_NEXT_LEVEL:
 			if(user.getLevel() < Game.LAST_LEVEL){
 				user.setLevel(user.getLevel() + 1);
+				
 				render();
 				setID(State.STATE_GAME_PLAY);
 			} else {

@@ -27,7 +27,7 @@ public class FileManager implements Serializable {
 		if(!dir.exists()) dir.mkdir();
 		FileOutputStream fos = new FileOutputStream("data/user/user.dat");
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(u);
+		oos.writeObject(u);//
 		oos.close();
 	}	
 	
