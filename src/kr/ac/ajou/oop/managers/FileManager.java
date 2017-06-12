@@ -31,6 +31,7 @@ public class FileManager implements Serializable {
 		oos.close();
 	}	
 	
+	
 	public static Image loadImage(int level) throws IOException
 	{
 		BufferedImage image;
@@ -40,6 +41,7 @@ public class FileManager implements Serializable {
 		
 		return image;
 	}
+	
 	
 	public static String loadGuidance(int level) throws IOException {
 

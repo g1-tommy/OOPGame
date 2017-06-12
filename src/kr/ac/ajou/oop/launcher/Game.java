@@ -2,6 +2,7 @@ package kr.ac.ajou.oop.launcher;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -28,8 +29,6 @@ import kr.ac.ajou.oop.panels.UserPanel;
 import kr.ac.ajou.oop.state.GameState;
 import kr.ac.ajou.oop.state.State;
 import kr.ac.ajou.oop.user.User;
-import java.awt.SystemColor;
-import javax.swing.border.TitledBorder;
 
 public class Game extends GameState implements ActionListener {
 	
@@ -144,6 +143,7 @@ public class Game extends GameState implements ActionListener {
 	public void render() {
 		code.load(user);
 		guidance.load(user);
+		situation.load(user);
 		guidance.getLblGuidance().setText(guidance.getHint());
 		code.getLblCode().setText(code.getCode());
 		userpanel.getLblLevel().setText("Level: " + user.getLevel());

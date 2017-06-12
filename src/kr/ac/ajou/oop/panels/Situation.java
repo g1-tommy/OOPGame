@@ -1,8 +1,10 @@
 package kr.ac.ajou.oop.panels;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
@@ -33,6 +35,14 @@ public class Situation extends JPanel
 	public void setImg(Image img) {
 		this.img = img;
 	}	
+	
+	@Override
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.drawImage(new ImageIcon(img).getImage(), 0, 0, null);
+	}
+	
 }
 
 
