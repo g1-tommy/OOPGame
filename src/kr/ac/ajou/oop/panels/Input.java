@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import kr.ac.ajou.oop.launcher.Game;
+import kr.ac.ajou.oop.managers.FileManager;
 import kr.ac.ajou.oop.state.State;
 
 @SuppressWarnings("serial")
@@ -25,7 +26,9 @@ public class Input extends JPanel implements ActionListener {
 
 	private JButton btnCheckMyAnswer;
 	private Game g;
-
+	private JLabel[] inputs;
+	private JTextField[] tfAnswer;
+	
 	public Input(Game g) {
 		this.g = g;
 
@@ -33,11 +36,20 @@ public class Input extends JPanel implements ActionListener {
 
 		btnCheckMyAnswer = new JButton("Check my Answer");
 		btnCheckMyAnswer.addActionListener(this);
-
+		add(btnCheckMyAnswer);
 //		GroupLayout gl_input = new GroupLayout(this);
 //		gl_input.setHorizontalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(287, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
 //		gl_input.setVerticalGroup(gl_input.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_input.createSequentialGroup().addContainerGap(110, Short.MAX_VALUE).addComponent(btnCheckMyAnswer)));
 		setLayout(new FlowLayout());
+		inputs = new JLabel[FileManager.getTFAmount(g.getUser().getLevel())];
+		tfAnswer = new JTextField[FileManager.getTFAmount(g.getUser().getLevel())];
+		for(int i = 0; i < inputs.length; i++) {
+			inputs[i] = new JLabel("Answer"+(i+1)+":\n");
+			tfAnswer[i] = new JTextField(10);
+			add(inputs[i]);
+			add(tfAnswer[i]);
+		}
+		
 	}
 
 	public boolean compare(int level) {
@@ -150,10 +162,12 @@ public class Input extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (compare(g.getUser().getLevel()) == true) {
-			g.setID(State.STATE_ANSWER_CORRECT);
+//			g.setID(State.STATE_ANSWER_CORRECT);
+			g.setID(State.STATE_ANSWER_INCORRECT);
 			g.update();
 		} else {
-			g.setID(State.STATE_ANSWER_INCORRECT);
+//			g.setID(State.STATE_ANSWER_INCORRECT);
+			g.setID(State.STATE_ANSWER_CORRECT);
 
 			g.update();
 		}
