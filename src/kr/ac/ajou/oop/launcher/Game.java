@@ -196,7 +196,7 @@ public class Game extends GameState implements ActionListener {
 			break;
 		case State.STATE_EXIT:
 			resetContent();
-			break;//
+			break;
 		}
 		if(getID() != State.STATE_GAME_PLAY) update();
 	}
