@@ -24,7 +24,7 @@ public class Situation extends JPanel
 		try {
 			setImg(FileManager.loadImage(u.getLevel()));
 		} catch (IOException e) {
-			e.printStackTrace();//
+			e.printStackTrace();
 		}
 	}
 
@@ -40,7 +40,7 @@ public class Situation extends JPanel
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-//		g.drawImage(new ImageIcon(img).getImage(), 0, 0, getWidth(), getHeight(), null);
+		g.drawImage(new ImageIcon(img).getImage(), 0, 0, getWidth(), getHeight(), null);
 	}
 	
 }
