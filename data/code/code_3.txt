@@ -8,16 +8,17 @@ class game_char
 
 class enemy extends game_char
 {
- @Override
-     punch(){
-//punch like an enemy
-};
-}
+	@Override
+    	punch(){
+		//punch like an enemy
+		};
+	}
 
-class gorilla extends game_char
-{
-@Override
-      punch(){
-//punch like a gorilla
-};   
+	class gorilla extends game_char
+	{
+		@Override
+    	punch(){
+		//punch like a gorilla
+		};   
+	}
 }       

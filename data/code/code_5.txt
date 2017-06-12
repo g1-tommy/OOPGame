@@ -18,7 +18,7 @@ class Gorila
 	//Getter
 	public int getAge()
 	{
-	   Return this.age;
+	   return this.age;
 	}
 
 }

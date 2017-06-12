@@ -1,12 +1,12 @@
 class enemy extends Character
 {
- Baton baton;
- Knife knife;
- Blaster blaster;
+	 Baton baton;
+	 Knife knife;
+	 Blaster blaster;
 }
 
 class Gorila extends __________
 {
-   _________ _______;
-   _________ _______;
+	   _________ _______;
+	   _________ _______;
 }

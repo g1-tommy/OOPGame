@@ -5,15 +5,15 @@ class enemy
 
 class gorilla
 {
- double weight;
- int age;
- String motto;
- Boolean gender;
+	 double weight;
+	 int age;
+	 String motto;
+	 Boolean gender;
 
- punch();
- shoot();
- move();
- jump();
- block();
+	 punch();
+	 shoot();
+	 move();
+	 jump();
+	 block();
 
 }       
