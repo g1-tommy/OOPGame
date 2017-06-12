@@ -46,6 +46,8 @@ public class Input extends JPanel implements ActionListener {
 
 	public boolean compare(int level) {
 
+		
+
 		if (level == 1) {
 
 			FileReader fReader;
@@ -94,58 +96,139 @@ public class Input extends JPanel implements ActionListener {
 
 		else if (level == 3) {
 
-			JLabel lblAnswer = new JLabel("Answer1:");
-			JTextField answer_1 = new JTextField();
-			answer_1.setColumns(10);
+			FileReader fReader;
+			BufferedReader br;
+			try {
+				fReader = new FileReader("text.txt");
+				br = new BufferedReader(fReader);
 
-			JLabel lblAnswer_1 = new JLabel("Answer2:");
-			JTextField answer_2 = new JTextField();
-			answer_2.setColumns(10);
+				JLabel lblAnswer = new JLabel("Answer1:");
+				JTextField answer_1 = new JTextField();
+				answer_1.setColumns(10);
 
-		}
+				JLabel lblAnswer_1 = new JLabel("Answer2:");
+				JTextField answer_2 = new JTextField();
+				answer_2.setColumns(10);
 
-		else if (level == 3) {
-			JLabel lblAnswer = new JLabel("Answer1:");
-			JTextField answer_1 = new JTextField();
-			answer_1.setColumns(10);
+				String s;
+				while ((s = br.readLine()) != null) {
 
-			JLabel lblAnswer_1 = new JLabel("Answer2:");
-			JTextField answer_2 = new JTextField();
-			answer_2.setColumns(10);
+					if (answer_1.getText() == s && answer_2.getText() == s) {
+						return true;
+					} else
+						return false;
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // level 1의 answer txt
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 
 		else if (level == 4) {
-			JLabel lblAnswer = new JLabel("Answer1:");
-			JTextField answer_1 = new JTextField();
-			answer_1.setColumns(10);
+			FileReader fReader;
+			BufferedReader br;
+			try {
+				fReader = new FileReader("text.txt");
+				br = new BufferedReader(fReader);
 
-			JLabel lblAnswer_1 = new JLabel("Answer2:");
-			JTextField answer_2 = new JTextField();
-			answer_2.setColumns(10);
+				JLabel lblAnswer = new JLabel("Answer1:");
+				JTextField answer_1 = new JTextField();
+				answer_1.setColumns(10);
 
+				JLabel lblAnswer_1 = new JLabel("Answer2:");
+				JTextField answer_2 = new JTextField();
+				answer_2.setColumns(10);
+
+				String s;
+				while ((s = br.readLine()) != null) {
+
+					if (answer_1.getText() == s && answer_2.getText() == s) {
+						return true;
+					} else
+						return false;
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // level 1의 answer txt
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		else if (level == 5) {
-			JLabel lblAnswer = new JLabel("Answer1:");
-			JTextField answer_1 = new JTextField();
-			answer_1.setColumns(10);
+			FileReader fReader;
+			BufferedReader br;
+			try {
+				fReader = new FileReader("text.txt");
+				br = new BufferedReader(fReader);
 
-			JLabel lblAnswer_1 = new JLabel("Answer2:");
-			JTextField answer_2 = new JTextField();
-			answer_2.setColumns(10);
+				JLabel lblAnswer = new JLabel("Answer1:");
+				JTextField answer_1 = new JTextField();
+				answer_1.setColumns(10);
+
+				JLabel lblAnswer_1 = new JLabel("Answer2:");
+				JTextField answer_2 = new JTextField();
+				answer_2.setColumns(10);
+
+				String s;
+				while ((s = br.readLine()) != null) {
+
+					if (answer_1.getText() == s && answer_2.getText() == s) {
+						return true;
+					} else
+						return false;
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // level 1의 answer txt
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 
 		else if (level == 6) {
-			JLabel lblAnswer = new JLabel("Answer1:");
-			JTextField answer_1 = new JTextField();
-			answer_1.setColumns(10);
+			FileReader fReader;
+			BufferedReader br;
+			try {
+				fReader = new FileReader("text.txt");
+				br = new BufferedReader(fReader);
 
-			JLabel lblAnswer_1 = new JLabel("Answer2:");
-			JTextField answer_2 = new JTextField();
-			answer_2.setColumns(10);
+				JLabel lblAnswer = new JLabel("Answer1:");
+				JTextField answer_1 = new JTextField();
+				answer_1.setColumns(10);
+
+				JLabel lblAnswer_1 = new JLabel("Answer2:");
+				JTextField answer_2 = new JTextField();
+				answer_2.setColumns(10);
+
+				String s;
+				while ((s = br.readLine()) != null) {
+
+					if (answer_1.getText() == s && answer_2.getText() == s) {
+						return true;
+					} else
+						return false;
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // level 1의 answer txt
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
-		return false;
 	}
 
 	@Override
