@@ -47,6 +47,7 @@ public class Input extends JPanel implements ActionListener {
 
 	public void setComponents() {
 		answers.removeAll();
+		repaint();
 		
 		btnCheckMyAnswer = new JButton("Check my Answer");
 		btnCheckMyAnswer.addActionListener(this);
