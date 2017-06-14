@@ -1,6 +1,7 @@
 1. Before we make main character, we have to describe what gorilla is.
 And we called it a 'Class'. Class is blueprint of object.
 If we want to create a gorilla, what we have to make before?
+(Class name has to start with capital letter)
 
 2. Now we made just gorilla. Let's make real gorilla object.
 Decide name of gorilla character.

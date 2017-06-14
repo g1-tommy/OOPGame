@@ -83,7 +83,11 @@ public class Input extends JPanel implements ActionListener {
 	public boolean compare(int level) {
 		try {
 			arr = FileManager.answers(level);
-
+			
+			if(g.getUser().getLevel()==1) {
+				if (!tfAnswer[0].getText().equals(arr.get(0)))
+					return false;
+			}
 			if (g.getUser().getLevel() == 2) {
 				for (int i = 0; i < arr.size(); i++) {
 					if (!ishas[i].getSelectedItem().equals(arr.get(i)))
@@ -107,7 +111,7 @@ public class Input extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCheckMyAnswer) {
-			if (g.getUser().getLevel() == 1 || compare(g.getUser().getLevel())) {
+			if (compare(g.getUser().getLevel())) {
 				g.setID(State.STATE_ANSWER_CORRECT);
 			} else {
 				g.setID(State.STATE_ANSWER_INCORRECT);
