@@ -4,3 +4,4 @@ And the gorilla want to punch enemy in a nicer way than the enemy.
 Then we should fix the __________________ method in ___________________ class.
 
 We didn't decide how to explain 'Overloading' concept.
+(class has to start with capital)

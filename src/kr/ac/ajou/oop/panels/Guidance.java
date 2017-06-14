@@ -1,6 +1,7 @@
 package kr.ac.ajou.oop.panels;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.SystemColor;
 import java.io.IOException;
 
@@ -24,9 +25,10 @@ public class Guidance extends JPanel {
     
     public Guidance() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-    	setBorder(new TitledBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Guidance", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), "Guidance", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		setBorder(new TitledBorder(null, "Guidance", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
 		lblGuidance = new JTextArea();
+		lblGuidance.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
 		lblGuidance.setEditable(false);
 		lblGuidance.setHighlighter(null);
 		lblGuidance.setBackground(SystemColor.control);

@@ -1,5 +1,6 @@
 package kr.ac.ajou.oop.panels;
 
+import java.awt.Font;
 import java.awt.SystemColor;
 import java.io.IOException;
 
@@ -21,6 +22,7 @@ public class Code extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
     	setBorder(new TitledBorder(null, "Code", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		lblCode = new JTextArea();
+		lblCode.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
 		lblCode.setEditable(false);
 		lblCode.setHighlighter(null);
 		lblCode.setBackground(SystemColor.control);

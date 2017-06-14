@@ -114,13 +114,13 @@ public class FileManager implements Serializable {
 			else score = -1;
 		} catch (FileNotFoundException e) {
 			score = -1;
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			score = -1;
-			e.printStackTrace();
+			
 		} catch (ClassNotFoundException e) {
 			score = -1;
-			e.printStackTrace();
+			
 		}
 		
 		return score;
@@ -145,13 +145,13 @@ public class FileManager implements Serializable {
 			rAmount = Integer.parseInt(sb.toString().split(" ")[level-1]);
 		} catch(NumberFormatException e) {
 			rAmount = -1;
-			e.printStackTrace();
+			
 		} catch (FileNotFoundException e) {
 			rAmount = -1;
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			rAmount = -1;
-			e.printStackTrace();
+			
 		}
 		
 		return rAmount;

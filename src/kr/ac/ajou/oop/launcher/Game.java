@@ -2,6 +2,7 @@ package kr.ac.ajou.oop.launcher;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
@@ -56,7 +58,7 @@ public class Game extends GameState implements ActionListener {
 					launcher.update();
 					launcher.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					
 				}
 			}
 		});
@@ -74,6 +76,9 @@ public class Game extends GameState implements ActionListener {
 		
 		user = new User();
 		userpanel = new UserPanel(user);
+		userpanel.getLblUsername().setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
+		userpanel.getLblLevel().setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
+		userpanel.getLblScore().setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
 		
 		guidance = new Guidance();
 		code = new Code();
@@ -92,20 +97,30 @@ public class Game extends GameState implements ActionListener {
 
 	public void setDialog() {
 		dialog = new JDialog(frame, true);
+		
 		JPanel userInfo = new JPanel();
+		JLabel hello = new JLabel("Hello!");
 		JLabel childlblName = new JLabel("Your name:");
-
+		
+		hello.setFont(new Font("Helvetica Neue", Font.PLAIN, 30));
+		hello.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		childlblName.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
 		tfName = new JTextField(10);
+		tfName.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
 		btnSave = new JButton("Save");
+		btnSave.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
 		btnSave.addActionListener(this);
 	
+		userInfo.setLayout(new BorderLayout(0, 0));
+		userInfo.add(hello, BorderLayout.NORTH);
 		userInfo.add(childlblName, BorderLayout.WEST);
 		userInfo.add(tfName, BorderLayout.CENTER);
 		userInfo.add(btnSave, BorderLayout.EAST);
 		
 		dialog.getContentPane().add(userInfo);
 		dialog.setBounds(100, 100, 450, 300);
-		dialog.setSize(300, 60);
+		dialog.setSize(400, 80);
 		dialog.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		dialog.setVisible(true);
 	}
@@ -146,30 +161,40 @@ public class Game extends GameState implements ActionListener {
 		guidance.getLblGuidance().setText(guidance.getHint());
 		code.getLblCode().setText(code.getCode());
 		input.setComponents();
+		situation.repaint();
 		userpanel.getLblLevel().setText("Level: " + user.getLevel());
 		userpanel.getLblScore().setText("Score: " + user.getScore());
 	}
 
 	@Override
 	public void update() {
+		JLabel msg;
 		switch (getID()) {
 		case State.STATE_GAME_INITIALIZE:
-			JOptionPane.showMessageDialog(null, "Welcome! You can play game by reading our guidance, and just typing your answer in the panel. That is all. Fighting.", "How to Play", JOptionPane.OK_OPTION);
+			msg = new JLabel("Welcome! You can play game by reading our guidance, and just typing your answer in the panel. That is all. Fighting.");
+			msg.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
+			JOptionPane.showMessageDialog(null, msg, "How to Play", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_PLAY);
 			break;
 		case State.STATE_GAME_PLAY:
 			break;
 		case State.STATE_ANSWER_CORRECT:
-			JOptionPane.showMessageDialog(null, "You're correct. Go to the next level.", "Great!", JOptionPane.OK_OPTION);
+			msg = new JLabel("You're correct. Go to the next level.");
+			msg.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
+			JOptionPane.showMessageDialog(null, msg, "Great!", JOptionPane.OK_OPTION);
 			user.setScore(user.getScore() + user.getLevel() * new Random().nextInt(100));
 			setID(State.STATE_NEXT_LEVEL);
 			break;
 		case State.STATE_ANSWER_INCORRECT:
-			JOptionPane.showMessageDialog(null, "Incorrect! Try Again.", "Incorrect!", JOptionPane.OK_OPTION);
+			msg = new JLabel("Incorrect! Try Again.");
+			msg.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
+			JOptionPane.showMessageDialog(null, msg, "Incorrect!", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_PLAY);
 			break;
 		case State.STATE_HIGH_SCORE:
-			JOptionPane.showMessageDialog(null, "You make the best score in this game ever before!", "Congrats!", JOptionPane.OK_OPTION);
+			msg = new JLabel("You make the best score in this game ever before!");
+			msg.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
+			JOptionPane.showMessageDialog(null, msg, "Congrats!", JOptionPane.OK_OPTION);
 			setID(State.STATE_GAME_OVER);
 			break;
 		case State.STATE_NEXT_LEVEL:
@@ -188,9 +213,11 @@ public class Game extends GameState implements ActionListener {
 			try {
 				FileManager.saveUser(user);
 			} catch (IOException e) {
-				e.printStackTrace();
+				
 			}
-			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "End!", JOptionPane.OK_OPTION);
+			msg = new JLabel("Your Information is saved in the directory.");
+			msg.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
+			JOptionPane.showMessageDialog(null, msg, "End!", JOptionPane.OK_OPTION);
 			setID(State.STATE_EXIT);
 			break;
 		case State.STATE_EXIT:
