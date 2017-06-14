@@ -131,6 +131,8 @@ public class Game extends GameState implements ActionListener {
 	
 	private void gameOver() {
 		user.setGameOver(true);
+		JLabel msg = new JLabel("Game ended!");
+		msg.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
 		JOptionPane.showMessageDialog(null, "Game ended!", "Game Over", JOptionPane.OK_OPTION);
 	}
 
