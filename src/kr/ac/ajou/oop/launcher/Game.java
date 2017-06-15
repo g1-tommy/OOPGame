@@ -56,7 +56,9 @@ public class Game extends GameState implements ActionListener {
 					launcher.update();
 					launcher.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(Game.this,
+							"Error occured",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -183,7 +185,7 @@ public class Game extends GameState implements ActionListener {
 				FileManager.saveUser(user);
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(Game.this,
-						"Input or Output Error",
+						"Cannot read the input",
 						JOptionPane.ERROR_MESSAGE);
 			}
 			JOptionPane.showMessageDialog(null, "Your Information is saved in the directory.", "End!", JOptionPane.OK_OPTION);
