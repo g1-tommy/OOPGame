@@ -32,7 +32,9 @@ public class Guidance extends JPanel {
     	try{
         	setHint(FileManager.loadGuidance(u.getLevel()));
     	}catch(IOException e) {
-    		e.printStackTrace();
+			JOptionPane.showMessageDialog(Game.this,
+					"Cannot read the input",
+					JOptionPane.ERROR_MESSAGE);;
 		}
     }
 

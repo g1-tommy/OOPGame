@@ -53,7 +53,7 @@ public class Input extends JPanel implements ActionListener {
 			FileReader fReader;
 			BufferedReader br;
 			try {
-				fReader = new FileReader("text.txt");
+				fReader = new FileReader("answer_1.txt");
 				br = new BufferedReader(fReader);
 
 				JLabel lblAnswer = new JLabel("Answer1:");
@@ -64,6 +64,11 @@ public class Input extends JPanel implements ActionListener {
 				JTextField answer_2 = new JTextField();
 				answer_2.setColumns(10);
 
+				this.add(lblAnswer);
+				this.add(answer_1);
+				this.add(lblAnswer_1);
+				this.add(answer_2);
+				
 				String s;
 				while ((s = br.readLine()) != null) {
 
@@ -74,11 +79,15 @@ public class Input extends JPanel implements ActionListener {
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"File is not found",
+						JOptionPane.ERROR_MESSAGE);
 			} // level 1의 answer txt
 			catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"Cannot read the input",
+						JOptionPane.ERROR_MESSAGE);
 			}
 
 		}
@@ -91,6 +100,11 @@ public class Input extends JPanel implements ActionListener {
 			scrollPane.add(textArea);
 
 			setPreferredSize(new Dimension(450, 110));
+			
+		
+			
+			
+			
 
 		}
 
@@ -99,7 +113,7 @@ public class Input extends JPanel implements ActionListener {
 			FileReader fReader;
 			BufferedReader br;
 			try {
-				fReader = new FileReader("text.txt");
+				fReader = new FileReader("answer_2.txt");
 				br = new BufferedReader(fReader);
 
 				JLabel lblAnswer = new JLabel("Answer1:");
@@ -120,11 +134,15 @@ public class Input extends JPanel implements ActionListener {
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"File is not found",
+						JOptionPane.ERROR_MESSAGE);
 			} // level 1의 answer txt
 			catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"Cannot read the input",
+						JOptionPane.ERROR_MESSAGE);
 			}
 
 		}
@@ -154,11 +172,15 @@ public class Input extends JPanel implements ActionListener {
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"File is not found",
+						JOptionPane.ERROR_MESSAGE);
 			} // level 1의 answer txt
 			catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"Cannot read the input",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
 
@@ -187,11 +209,15 @@ public class Input extends JPanel implements ActionListener {
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"File is not found",
+						JOptionPane.ERROR_MESSAGE);;
 			} // level 1의 answer txt
 			catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"Cannot read the input",
+						JOptionPane.ERROR_MESSAGE);
 			}
 
 		}
@@ -221,11 +247,15 @@ public class Input extends JPanel implements ActionListener {
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"File is not found",
+						JOptionPane.ERROR_MESSAGE);;
 			} // level 1의 answer txt
 			catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(Game.this,
+						"Cannot read the input",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
 

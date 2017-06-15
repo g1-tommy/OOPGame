@@ -92,20 +92,28 @@ public class FileManager implements Serializable {
 			else score = -1;
 		} catch (StreamCorruptedException e) {
 			score = -1;
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(Game.this,
+					"Error occured",
+					JOptionPane.ERROR_MESSAGE);
 <<<<<<< Updated upstream
 =======
 >>>>>>> 403d40da4bedf38031cb918320826760153084a0
 >>>>>>> Stashed changes
 		} catch (FileNotFoundException e) {
 			score = -1;
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(Game.this,
+					"File is not found!",
+					JOptionPane.ERROR_MESSAGE);
 		} catch (IOException e) {
 			score = -1;
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(Game.this,
+					"Cannot read the input",
+					JOptionPane.ERROR_MESSAGE);
 		} catch (ClassNotFoundException e) {
 			score = -1;
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(Game.this,
+					"Error occured",
+					JOptionPane.ERROR_MESSAGE);
 <<<<<<< Updated upstream
 =======
 <<<<<<< HEAD
@@ -138,13 +146,19 @@ public class FileManager implements Serializable {
 			rAmount = Integer.parseInt(sb.toString().split(" ")[level - 1]);
 		} catch (NumberFormatException e) {
 			rAmount = -1;
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(Game.this,
+					"Just enter the string",
+					JOptionPane.ERROR_MESSAGE);
 		} catch (FileNotFoundException e) {
 			rAmount = -1;
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(Game.this,
+					"File is not found",
+					JOptionPane.ERROR_MESSAGE);
 		} catch (IOException e) {
 			rAmount = -1;
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(Game.this,
+					"Cannot read the input",
+					JOptionPane.ERROR_MESSAGE);
 		}
 
 		return rAmount;
