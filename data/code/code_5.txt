@@ -1,0 +1,22 @@
+class Gorila
+{
+//example code
+
+   private Int age;
+   double weight;
+  
+	// Setter
+	public void setAge(int age)
+	{
+	// Guardian
+	  If(age > 0)
+	   This.age = age;
+	}
+	
+	//Getter
+	public int getAge()
+	{
+	 return this.age;
+	}
+
+}
