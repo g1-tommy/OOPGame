@@ -81,131 +81,6 @@ public class Input extends JPanel implements ActionListener {
 	}
 
 	public boolean compare(int level) {
-<<<<<<< HEAD
-
-		
-
-		if (level == 1) {
-
-			FileReader fReader;
-			BufferedReader br;
-			try {
-				fReader = new FileReader("answer_1.txt");
-				br = new BufferedReader(fReader);
-
-				JLabel lblAnswer = new JLabel("Answer1:");
-				JTextField answer_1 = new JTextField();
-				answer_1.setColumns(10);
-
-				JLabel lblAnswer_1 = new JLabel("Answer2:");
-				JTextField answer_2 = new JTextField();
-				answer_2.setColumns(10);
-
-				this.add(lblAnswer);
-				this.add(answer_1);
-				this.add(lblAnswer_1);
-				this.add(answer_2);
-				
-				String s;
-				while ((s = br.readLine()) != null) {
-
-					if (answer_1.getText() == s && answer_2.getText() == s) {
-						return true;
-					} else
-						return false;
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"File is not found",
-						JOptionPane.ERROR_MESSAGE);
-			} // level 1의 answer txt
-			catch (IOException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"Cannot read the input",
-						JOptionPane.ERROR_MESSAGE);
-			}
-
-		}
-
-		else if (level == 2) {
-
-			JTextArea textArea = new JTextArea(5, 30);
-
-			JScrollPane scrollPane = new JScrollPane();
-			scrollPane.add(textArea);
-
-			setPreferredSize(new Dimension(450, 110));
-			
-		
-			
-			
-			
-
-		}
-
-		else if (level == 3) {
-
-			FileReader fReader;
-			BufferedReader br;
-			try {
-				fReader = new FileReader("answer_2.txt");
-				br = new BufferedReader(fReader);
-
-				JLabel lblAnswer = new JLabel("Answer1:");
-				JTextField answer_1 = new JTextField();
-				answer_1.setColumns(10);
-
-				JLabel lblAnswer_1 = new JLabel("Answer2:");
-				JTextField answer_2 = new JTextField();
-				answer_2.setColumns(10);
-
-				String s;
-				while ((s = br.readLine()) != null) {
-
-					if (answer_1.getText() == s && answer_2.getText() == s) {
-						return true;
-					} else
-						return false;
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"File is not found",
-						JOptionPane.ERROR_MESSAGE);
-			} // level 1의 answer txt
-			catch (IOException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"Cannot read the input",
-						JOptionPane.ERROR_MESSAGE);
-			}
-
-		}
-
-		else if (level == 4) {
-			FileReader fReader;
-			BufferedReader br;
-			try {
-				fReader = new FileReader("text.txt");
-				br = new BufferedReader(fReader);
-
-				JLabel lblAnswer = new JLabel("Answer1:");
-				JTextField answer_1 = new JTextField();
-				answer_1.setColumns(10);
-
-				JLabel lblAnswer_1 = new JLabel("Answer2:");
-				JTextField answer_2 = new JTextField();
-				answer_2.setColumns(10);
-
-				String s;
-				while ((s = br.readLine()) != null) {
-
-					if (answer_1.getText() == s && answer_2.getText() == s) {
-						return true;
-					} else
-=======
 		try {
 			arr = FileManager.answers(level);
 			
@@ -216,114 +91,21 @@ public class Input extends JPanel implements ActionListener {
 			if (g.getUser().getLevel() == 2) {
 				for (int i = 0; i < arr.size(); i++) {
 					if (!ishas[i].getSelectedItem().equals(arr.get(i)))
->>>>>>> branch 'master' of https://github.com/jwurbane97/oop_projects.git
 						return false;
 
 				}
-<<<<<<< HEAD
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"File is not found",
-						JOptionPane.ERROR_MESSAGE);
-			} // level 1의 answer txt
-			catch (IOException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"Cannot read the input",
-						JOptionPane.ERROR_MESSAGE);
-			}
-		}
-
-		else if (level == 5) {
-			FileReader fReader;
-			BufferedReader br;
-			try {
-				fReader = new FileReader("text.txt");
-				br = new BufferedReader(fReader);
-
-				JLabel lblAnswer = new JLabel("Answer1:");
-				JTextField answer_1 = new JTextField();
-				answer_1.setColumns(10);
-
-				JLabel lblAnswer_1 = new JLabel("Answer2:");
-				JTextField answer_2 = new JTextField();
-				answer_2.setColumns(10);
-
-				String s;
-				while ((s = br.readLine()) != null) {
-
-					if (answer_1.getText() == s && answer_2.getText() == s) {
-						return true;
-					} else
-						return false;
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"File is not found",
-						JOptionPane.ERROR_MESSAGE);;
-			} // level 1의 answer txt
-			catch (IOException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"Cannot read the input",
-						JOptionPane.ERROR_MESSAGE);
-=======
 			} else {
 				for (int i = 0; i < arr.size(); i++) {
 					if (!tfAnswer[i].getText().equals(arr.get(i)))
 						return false;
 
 				}
->>>>>>> branch 'master' of https://github.com/jwurbane97/oop_projects.git
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-
-		else if (level == 6) {
-			FileReader fReader;
-			BufferedReader br;
-			try {
-				fReader = new FileReader("text.txt");
-				br = new BufferedReader(fReader);
-
-				JLabel lblAnswer = new JLabel("Answer1:");
-				JTextField answer_1 = new JTextField();
-				answer_1.setColumns(10);
-
-				JLabel lblAnswer_1 = new JLabel("Answer2:");
-				JTextField answer_2 = new JTextField();
-				answer_2.setColumns(10);
-
-				String s;
-				while ((s = br.readLine()) != null) {
-
-					if (answer_1.getText() == s && answer_2.getText() == s) {
-						return true;
-					} else
-						return false;
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"File is not found",
-						JOptionPane.ERROR_MESSAGE);;
-			} // level 1의 answer txt
-			catch (IOException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(Game.this,
-						"Cannot read the input",
-						JOptionPane.ERROR_MESSAGE);
-			}
-		}
-
-=======
 		return true;
->>>>>>> branch 'master' of https://github.com/jwurbane97/oop_projects.git
 	}
 
 	@Override

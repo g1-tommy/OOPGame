@@ -1,6 +1,5 @@
 package kr.ac.ajou.oop.panels;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.io.IOException;
@@ -10,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import kr.ac.ajou.oop.managers.FileManager;
@@ -44,9 +42,7 @@ public class Guidance extends JPanel {
     	try{
         	setHint(FileManager.loadGuidance(u.getLevel()));
     	}catch(IOException e) {
-			JOptionPane.showMessageDialog(Game.this,
-					"Cannot read the input",
-					JOptionPane.ERROR_MESSAGE);;
+    		e.printStackTrace();
 		}
     }
 

@@ -40,9 +40,7 @@ public class Code extends JPanel {
     	try{
         	setCode(FileManager.loadAnswerCode(u.getLevel()));
     	}catch(IOException e) {
-			JOptionPane.showMessageDialog(Game.this,
-					"Cannot read the input",
-					JOptionPane.ERROR_MESSAGE);
+    		e.printStackTrace();
     	}
     }
 
